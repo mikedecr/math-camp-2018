@@ -13,6 +13,10 @@ This repository contains materials for UW–Madison Political Science Math Camp 
 
 This year's instruction is co-instructed with Micah C.R. Dillard
 
+Resources for collaboration:
+
+- [Happy Git with R](http://happygitwithr.com/)
+
 
 
 
@@ -30,4 +34,4 @@ Lectures are organized into two parts
 ## Technical details on repo setup
 
 - 2017 lessons are in a separate repository/directory on home machine. **Note to self:** Learn how to submodule.
-- 2017 notes contain past materials, other notes to self. 
+- 2017 notes contain past materials, other notes to self.
