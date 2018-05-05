@@ -1,0 +1,50 @@
+---
+title: Notes for Math Camp, 2018
+author: Mike DeCrescenzo
+date: 2018-05-05
+---
+
+# To Do
+
+Git
+
+- Archive 2017
+- Micah version of 2017
+- 2018 version
+
+
+Qualtrics
+
+- download R
+- simple math problems
+ - summation
+ - derivative
+ - integral
+
+
+
+# General notes
+
+Proposed daily structure
+
+- mornings: math
+- afternoons: code
+
+
+Proposed roadmap
+
+- Monday: Algebra
+  + Morning: algebra and notation
+  + Afternoon: opening R, objects, indexing, arithmetic
+- Tuesday: Calculus
+  - Morning: derivatives, integrals
+  - Afternoon: plotting simple curves (and intro to graphics? (base is fine?)))
+- Wednesday: Probability and stats 1
+  - Morning: basic concepts, independence, conditional independence
+  - Afternoon: writing simulations and empirical probability?
+- Thursday: Probability and stats 2
+  - Morning: reading regression equations, statistical significance
+  - Afternoon: simulating regression problems
+- Friday: Math going forward
+  - Morning: (Micah) game theory, TCSC, other problems with timely data?
+  - Afternoon: (Mike) Bayes, p-values, etc.
