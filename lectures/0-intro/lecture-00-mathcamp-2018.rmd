@@ -1,0 +1,389 @@
+---
+title: "Welcome to Math Camp (2018)"
+subtitle: "Dept. of Political Science <br> University of Wisconsin--Madison"
+author: "Michael DeCrescenzo and Micah Dillard"
+date: "August 20, 2018"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      # highlightStyle: github
+      highlightStyle: solarized-dark
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+class: inverse, center, middle
+
+# Math and Political Science
+
+### (Political Science and Math)
+
+
+<!-- include setup -->
+
+```{r xaringan-themer, include = FALSE}
+
+# Xaringan settings
+library("xaringanthemer")
+duo_accent(
+  # primary_color = "#073642",
+  # secondary_color = "#93a1a1", 
+  # link_color = "2aa198",
+  # primary_color = "#006747", 
+  # secondary_color = "#CFC493",
+  primary_color = "#9b0000", 
+  secondary_color = "#0479a8",
+           
+# mono_light(
+#   base_color = "#1c5253",
+   header_font_google = google_font("Vollkorn"), 
+   text_font_google   = google_font("Source Sans Pro"), 
+   code_font_google   = google_font("Droid Sans Mono")
+)
+
+
+
+
+# html
+options(htmltools.dir.version = FALSE)
+
+```
+
+
+
+---
+class: center, inverse, middle
+
+# Why math?
+
+
+---
+
+class: center
+
+# In general...
+
+--
+
+Math is explicit and specific
+
+--
+
+*Formalizing:* lay out premises and assumptions, derive implications
+
+--
+
+Discover hidden insights
+
+--
+
+Even if you don't do highly mathematical work, you will encounter it
+
+
+
+
+---
+
+class: center
+
+# For empirical research <br> (data analysis...) 
+
+--
+
+Principled measurement methods
+
+--
+
+Formally describe patterns in observed data
+
+--
+
+Make judgments about *statistically meaningful* findings (vs. random noise)
+
+--
+
+Make causal inferences
+
+
+
+
+---
+
+class: center
+
+# For formal models <br> (game theory...)
+
+--
+
+Define sets of actors, preferences, incentives
+
+--
+
+Derive actors' strategies for optimal payoffs
+
+--
+
+Describe trade-offs of certain actions
+
+--
+
+Dealing with limited information, probabilistic beliefs, learning from new information
+
+
+
+
+
+
+
+---
+
+class: inverse, center, middle
+
+# Objectives
+
+
+---
+
+# Objectives 
+
+1. **Show where political science needs math**, using examples
+
+--
+
+1. Introduce or review fundamental math concepts that you will encounter and use
+
+--
+
+1. Focused on *intuitive, conceptual* understanding; not too much arithmetic
+
+--
+
+1. New: *computing applications and practice* (using R)!
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+class: center, middle, inverse
+
+# Reassurances
+
+
+---
+
+# Reassurances
+
+
+Some material will be unfamiliar (and maybe scary) at first, *but*...
+
+--
+
+- Nobody expects you to be an expert by the end of math camp (that isn't the point)
+
+--
+
+- The point is intuition and application, not proofs or overly tricky examples
+
+--
+
+
+How do I know you will be fine? 
+
+--
+
+- I had a weak math background (never took calculus until grad school)
+
+--
+
+- I skipped math camp (was out of town)
+
+--
+
+- Different areas of research emphasize different areas of math (and specialization is the norm)
+
+--
+
+- You get out what you put in
+
+
+
+
+---
+
+class: center, middle
+
+# Questions so far?
+
+
+---
+
+class: center, middle, inverse
+
+# Agenda
+
+
+
+---
+
+
+### Mornings (9–12ish): math lessons
+
+Lecture slides, definitions, examples
+
+--
+
+### Afternoons (1–3ish): computer lessons
+
+Applying the material in R
+
+--
+
+### Take-home exercises
+
+Will be distributed online, *but not collected or graded*
+
+--
+
+### "Office hours" (3ish–5ish)
+
+(But you should feel free to ask questions throughout)
+
+
+
+
+---
+
+#### Monday: Algebra 
+
+- Fundamentals, notation, vectors and matrices: manipulating data
+
+#### Tuesday: Calculus
+
+- Limits, derivatives, integrals: how variables affect outcomes
+
+#### Wednesday: Probability Day #1
+
+- Probabilistic processes, random variables, patterns in "real world" data
+
+#### Thursday: Probability Day #2
+
+- The math of probability, conditional probability
+
+#### Friday: Computer Day
+
+- Datasets, data munging, computational social science
+
+
+
+---
+
+class: center, middle
+
+# Deliverables?
+
+Homework is optional
+
+No final exam (or grades of any kind)
+
+You are in charge of yourselves
+
+### Questions?
+
+
+---
+
+# In the classroom
+
+- We will cover a lot of material, and everyone has a different background
+
+- We want to promote an open and accepting environment
+
+- I want to know when you're comfortable with material, but don't be showoffs, and don't be jerks to each other
+
+### Let us (Micah and me) know how we can make this work better
+
+- Ask questions! Lots of questions! They help the entire class!
+
+- Slow us down
+
+- Ask *why* we are learning something
+
+
+
+---
+
+# Resources
+
+The [Github repository](https://github.com/mikedecr/math-camp-2018): 
+
+- Slides, exercises
+- Source code to build it all
+
+Other resources:
+
+- View [last year's materials](https://github.com/mikedecr/math-camp-2017)
+- Gill, [*Essential Mathematics for Political and Social Research*](https://www.amazon.com/Essential-Mathematics-Political-Research-Analytical/dp/052168403X)
+- Moore & Siegal: [*A Mathematics Course for Political & Social Research*](http://people.duke.edu/~das76/MooSieBook.html)
+
+
+---
+
+class: center, middle, inverse
+
+# About your instructors
+
+---
+
+# Mike DeCrescenzo
+
+.pull-left[<img width = 100% src="img/mike.png">]
+
+.pull-right[
+From St. Louis, Missouri. Short stints in Berkeley, CA
+
+Studies American politics & political methodology (since 2014)
+
+Primary elections, gender and voting, voter identification requirements
+
+Comparative advantage: Bayesian analysis (probability and statistics)
+
+Email: [decrescenzo@wisc.edu](mailto:decrescenzo@wisc.edu)
+]
+
+---
+
+# Micah Dillard
+
+.pull-left[<img width = 100% src="img/micah.jpg">]
+
+.pull-right[
+A proud Ohio son (Columbus)
+
+Studies international relations & political methodology (since 2014)
+
+Economic sanctions, energy and foreign policy, non-traditional security
+
+Comparative advantage: Formal theory (algebra and calculus)
+
+Email: [micah.dillard@wisc.edu](mailto:micah.dillard@wisc.edu)]
+
+
+---
+
+class: center, middle, inverse
+
+# Let's get started
+
+
+

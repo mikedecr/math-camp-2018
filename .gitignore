@@ -6,6 +6,10 @@
 # figure out how to sub-module?
 
 
+# here-and-there files
+*incremental.Rmd
+
+
 
 # ----------------------------- #
 #          TeX things
@@ -113,3 +117,7 @@ sympy-plots-for-*.tex/
 
 # R data files from past sessions
 .Rdata
+
+# xaringan build
+*.html
+*.css

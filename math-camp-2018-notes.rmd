@@ -4,11 +4,12 @@ author: Mike DeCrescenzo
 date: 2018-05-05
 ---
 
+
 # To Do
 
 Git
 
-- Archive 2017
+- [x] Archive 2017
 - Micah version of 2017
 - 2018 version
 
