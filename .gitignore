@@ -5,6 +5,13 @@
 2017/*
 # figure out how to sub-module?
 
+# build output
+# xaringan
+*.html
+*.css
+
+# RDS data (saved options)
+data/aesthetics/*
 
 # here-and-there files
 *incremental.Rmd
@@ -118,6 +125,3 @@ sympy-plots-for-*.tex/
 # R data files from past sessions
 .Rdata
 
-# xaringan build
-*.html
-*.css

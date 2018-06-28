@@ -24,31 +24,8 @@ class: inverse, center, middle
 <!-- include setup -->
 
 ```{r xaringan-themer, include = FALSE}
-
-# Xaringan settings
-library("xaringanthemer")
-duo_accent(
-  # primary_color = "#073642",
-  # secondary_color = "#93a1a1", 
-  # link_color = "2aa198",
-  # primary_color = "#006747", 
-  # secondary_color = "#CFC493",
-  primary_color = "#9b0000", 
-  secondary_color = "#0479a8",
-           
-# mono_light(
-#   base_color = "#1c5253",
-   header_font_google = google_font("Vollkorn"), 
-   text_font_google   = google_font("Source Sans Pro"), 
-   code_font_google   = google_font("Droid Sans Mono")
-)
-
-
-
-
-# html
-options(htmltools.dir.version = FALSE)
-
+library("here")
+source(here("R/setup-lectures.R"))
 ```
 
 
@@ -57,6 +34,10 @@ options(htmltools.dir.version = FALSE)
 class: center, inverse, middle
 
 # Why math?
+
+
+
+
 
 
 ---
@@ -80,6 +61,8 @@ Discover hidden insights
 --
 
 Even if you don't do highly mathematical work, you will encounter it
+
+
 
 
 
@@ -144,6 +127,9 @@ class: inverse, center, middle
 # Objectives
 
 
+
+
+
 ---
 
 # Objectives 
@@ -178,6 +164,9 @@ class: inverse, center, middle
 class: center, middle, inverse
 
 # Reassurances
+
+
+
 
 
 ---
@@ -219,11 +208,15 @@ How do I know you will be fine?
 
 
 
+
 ---
 
 class: center, middle
 
 # Questions so far?
+
+
+
 
 
 ---
@@ -234,8 +227,10 @@ class: center, middle, inverse
 
 
 
----
 
+
+
+---
 
 ### Mornings (9–12ish): math lessons
 
@@ -258,6 +253,7 @@ Will be distributed online, *but not collected or graded*
 ### "Office hours" (3ish–5ish)
 
 (But you should feel free to ask questions throughout)
+
 
 
 
@@ -286,6 +282,7 @@ Will be distributed online, *but not collected or graded*
 
 
 
+
 ---
 
 class: center, middle
@@ -299,6 +296,9 @@ No final exam (or grades of any kind)
 You are in charge of yourselves
 
 ### Questions?
+
+
+
 
 
 ---
@@ -321,6 +321,7 @@ You are in charge of yourselves
 
 
 
+
 ---
 
 # Resources
@@ -337,11 +338,17 @@ Other resources:
 - Moore & Siegal: [*A Mathematics Course for Political & Social Research*](http://people.duke.edu/~das76/MooSieBook.html)
 
 
+
+
+
 ---
 
 class: center, middle, inverse
 
 # About your instructors
+
+
+
 
 ---
 
@@ -361,6 +368,7 @@ Comparative advantage: Bayesian analysis (probability and statistics)
 Email: [decrescenzo@wisc.edu](mailto:decrescenzo@wisc.edu)
 ]
 
+
 ---
 
 # Micah Dillard
@@ -377,6 +385,10 @@ Economic sanctions, energy and foreign policy, non-traditional security
 Comparative advantage: Formal theory (algebra and calculus)
 
 Email: [micah.dillard@wisc.edu](mailto:micah.dillard@wisc.edu)]
+
+
+
+
 
 
 ---

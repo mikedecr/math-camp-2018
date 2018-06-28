@@ -4,23 +4,55 @@ author: Mike DeCrescenzo
 date: 2018-05-05
 ---
 
+# Advice
+
+math camp notes
+
+- concepts and justification
+- don't let thoughts about methods fuck up the changes to math camp
+- arithmetic and concepts can't be too far apart
+- if the purpose is to prepare for 812 then R isn't important
+- more emphasis on the algebra, linear algebra, inequalities
+- afternoon structured study hall
+
+
+
+
 
 # To Do
 
 Git
 
-- [x] Archive 2017
-- Micah version of 2017
-- 2018 version
+- [ ] Teach Micah basics of Git
+- [ ] Clone repository
+- [ ] Test pull request
+- [ ] Test issue
 
 
 Qualtrics
 
 - download R
-- simple math problems
- - summation
- - derivative
- - integral
+- Open R, do simple commands
+- Download Rstudio (ALL THE WAY)
+- Math:
+  + indexing
+  + summation
+  + two-layer summation (i in j = 1)
+  + derivative
+  + integral
+  + independent probability
+  + conditional probability
+
+
+Slides
+
+- where should color options go?
+- knit to HTML using code (`build.R` file)
+- HTML to PDF (`build.R` file)
+  + needs additional CSS?
+- Learn to modify CSS from source file:
+  + body font size (set global option)
+  + page rules for PDF export?
 
 
 
@@ -49,3 +81,106 @@ Proposed roadmap
 - Friday: Math going forward
   - Morning: (Micah) game theory, TCSC, other problems with timely data?
   - Afternoon: (Mike) Bayes, p-values, etc.
+
+
+
+things to keep in mind:
+
+- always provide motivation
+- have examples be graphics AND math
+- describe basic political science concepts always
+  + What is a formal model
+  + what is game theory
+  + what is regression
+  + what is variance
+  + what is statistical significance
+
+
+the concept/arithmetic is not constant from one topic to the next
+
+
+
+
+# Calc day
+
+Chain rule: 
+
+- make an example where you show them a logit curve. The basic idea is that as X increases, the effect on Y is not constant. Other variables affect your "starting point," so the derivative has to factor them in
+
+
+
+# Probability Day 1:
+
+Demonstration of random outcomes
+
+- flip a coin once
+- flip a coin ten times
+- flip a coin 100 times
+
+
+Vocabulary of probability
+
+- data generating process
+- probability distribution
+- expected value
+- variation
+- deviate
+- variance
+- standard deviation
+- "noise"
+- signal/noise ratio
+
+
+
+
+# Going through old notes (2018-06-27)
+
+Read this as: 
+
+- present location
+  + future location
+    * topic
+- day 1, algebra:
+  + move to **Day 0: intro**
+    * basic footing, why math?
+  + keep in **Day 1: Fundamentals and Algebra**
+    * Data and data types (vocabulary) with coffee example
+    * discrete/continuous, qual/quant (*add graphics, sparklines?*)
+    * Why variable categorization matters (*but only if graphics and slow examples*)
+    * symbols (only the right side, replace $\propto$ with $\in$)
+    * journal example (*but draw the data shape*)
+    * intervals (*add graphical example*)
+    * coordinate systems but drop $\mathbb{R}$ stuff (first sentence)
+    * functions (specify that $x$ is input, that $f(x) = y$ for a specific $x$). Function often refers specifically to the mapping/algorithm
+    * function examples (*add graphics for 2D grid, do 3+D by hand*)
+    * shifting and scaling with one function
+    * nested functions (slower example)
+    * piecewise functions
+    * exercises (*add nested function example*)
+    * Concept reminders
+      - exponents and roots (properties, *add note about inverse functions*)
+      - continuity and monotonicity (*add intuition from game theory*)
+      - concavity and convex (*add implications for extrema*)
+      - *add slide about asymptotes*
+      - polynomials (*add FOIL is a special case of distribution*)
+      - absolute values (*relate to even exponents*)
+      - *cut quadratic formula*
+      - substitution 
+      - *elimination if time?*
+  + move to **Day 2: Linear Algebra** 
+    * start with review of coffee data
+    * notation for real data
+    * types of variables (scalars, vectors, matrices)
+    * why think about data this way
+    * Indexing right before sum/product
+      - *add slow examples for constants inside the sum/product*
+    * vectors, matrices, etc.
+  + move to **Day 3: Calculus** 
+  + move to **Day x: Probability**
+    * combinations and permutations (*binomial example?*)
+
+
+
+
+
+
