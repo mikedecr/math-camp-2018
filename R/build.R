@@ -1,17 +1,12 @@
 # ----------------------------------------------------
 #   Setup file for Math Camp scripts
-#   (standardized options)
+#   Run this before anything else
+#   Working directory should ALREADY be the PROJECT ROOT
 # ----------------------------------------------------
 
 # should be in "math-camp" folder
 system("touch .here")
 library("here")
-
-
-# --- Graphics -----------------------
-
-saveRDS(primary, here("data/aesthetics/primary-color.RDS"))
-saveRDS(secondary, here("data/aesthetics/secondary-color.RDS"))
 
 
 
