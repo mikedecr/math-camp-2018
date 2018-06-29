@@ -4,9 +4,9 @@ library("tidyverse")
 library("ggplot2")
 
 
-#  custom ggtheme, import from Github
-source("https://raw.githubusercontent.com/mikedecr/theme-mgd/master/theme_mgd.R")
-theme_set(theme_mgd()) # set default theme
+#  custom ggtheme, based on theme_mgd()
+source(here("R/theme_mathcamp.R"))
+theme_set(theme_mathcamp()) # set default theme
 
 
 # suppress version on html output folders
@@ -27,4 +27,10 @@ duo_accent(primary_color = primary,
            code_font_google   = google_font("Roboto Mono"),
            # code_font_google   = google_font("CamingoCode"),
            text_bold_color = "#000000",
-           code_inline_color = "#000000")
+           code_inline_color = "#000000",
+           table_row_even_background_color = "white")
+
+knitr::opts_chunk$set(eval = TRUE, echo = FALSE, cache = TRUE)
+
+
+
