@@ -23,14 +23,24 @@ library("xaringanthemer")
 duo_accent(primary_color = primary, 
            secondary_color = secondary, 
            header_font_google = google_font("Vollkorn"), 
-           text_font_google   = google_font("Source Sans Pro"), 
+           # text_font_google   = google_font("Source Sans Pro"), 
+           text_font_google   = google_font("Roboto"), 
            code_font_google   = google_font("Roboto Mono"),
            # code_font_google   = google_font("CamingoCode"),
-           text_bold_color = "#000000",
-           code_inline_color = "#000000",
-           table_row_even_background_color = "white")
+           # text_bold_color = "#000000",
+           # code_inline_color = "#000000",
+           code_inline_background_color = "#F5F5F5",
+           table_row_even_background_color = "white",
+           extra_css = 
+             list(".remark-slide-number" = list("display" = "none")))
+  
 
-knitr::opts_chunk$set(eval = TRUE, echo = FALSE, cache = TRUE)
+# chunks:
+# hide code and messages
+# cache everything
+knitr::opts_chunk$set(eval = TRUE, echo = FALSE, 
+                      warning = FALSE, message = FALSE,
+                      cache = TRUE)
 
 
 

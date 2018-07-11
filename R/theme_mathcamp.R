@@ -61,7 +61,7 @@ theme_mathcamp <- function(base_size = 12, base_family = "Roboto") {
     
 # --- strip -----------------------
     strip.background = element_blank(),
-    strip.text = element_text(size = rel(0.9)),
+    strip.text = element_text(size = rel(1.2)),
 
 
 
