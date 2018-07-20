@@ -7,10 +7,11 @@
 
 # build output
 # - xaringan
-# *.html
-# *.css
+*.html
+*.css
 # - rmd cache
 lectures/*/lecture*cache
+lectures/*/*/figure-html/
 # - accidental rmd builds
 math-camp-2018-notes.html
 
