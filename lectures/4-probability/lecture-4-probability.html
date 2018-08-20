@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Math Camp: Lesson 4</title>
+    <meta charset="utf-8">
+    <meta name="author" content="UW–Madison Political Science" />
+    <meta name="date" content="2018-08-24" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Math Camp: Lesson 4
+## Statistics and Probability
+### UW–Madison Political Science
+### August 24, 2018
+
+---
+
+
+class: inverse, center, middle
+
+# Why do we mess with statistics?
+
+&lt;!-- include setup --&gt;
+
+
+
+
+
+---
+
+## Why statistics?
+
+There is uncertainty in real-world data
+
+--
+
+- I am interested in measuring `\(x\)`, but lots of forces affect `\(x\)`
+
+--
+
+- Maybe I am interested in understanding the sizes of these forces
+
+--
+
+- How do you do that?
+
+
+Your data are affected by forces that you can't see
+
+--
+
+- Models that describe our data have *unknown variables* ("parameters")
+
+--
+
+- How do we estimate those parameters?
+
+
+---
+
+class: inverse, center, middle
+
+# A silly example
+
+
+
+---
+
+class: center, middle
+
+## Let's flip a coin
+
+If we flip a *fair* coin, what is the probability that it lands heads up?
+
+&lt;!-- formalize this in the next lecture? --&gt;
+
+
+
+
+
+---
+
+
+## Let's flip a coin
+
+Some R code...
+
+
+```r
+# two possible outcomes
+coin &lt;- c("Heads", "Tails")
+
+# one random sample
+sample(coin, size = 1)
+```
+
+```
+## [1] "Tails"
+```
+
+
+
+---
+
+## What's going on here?
+
+Observed data are influenced by underlying processes
+
+--
+
+- The coin flip (data) is influenced by an underlying *probability of Heads*
+
+--
+
+- There is a *systematic* component and a *random* component
+
+--
+
+- Statistical modeling is (in part) distinguishing systematic forces from random forces
+
+
+
+
+---
+
+## Statistics
+
+The mathematical study of data
+
+--
+
+- Data come from some underlying, unknown process
+
+--
+
+- **Descriptive statistics:** describe the data (mean, standard deviation, correlations)
+
+--
+
+- **Inferential statistics:** describe the underlying process (as best we can)
+
+
+--
+
+We do plenty of both in political science, but the big focus is on inference
+
+--
+
+- We theorize about how politics works
+
+--
+
+- We collect data
+
+--
+
+- We *make inferences* about the processes that influence the data
+
+--
+
+- Are those inferences consistent with our theories?
+
+
+
+---
+
+class: center, middle
+
+### Statistics has a role in the scientific process
+
+When we analyze our data, statistics help(s) us interpret what the data show
+
+
+
+
+
+
+---
+
+## Statistics and probability
+
+To make inferences about **data generating process**, we use probability
+
+--
+
+- Example: we have some data, but we don't know which process they come from
+
+--
+
+- We entertain a few possible different **models** (for the process), model `\(A\)`, model `\(B\)`...
+
+--
+
+- Data may be more probable under one model or another
+
+--
+
+- We can calculate the *probability of the data* under each model to pick the best model
+
+
+
+
+---
+
+## Probability in political science
+
+- Describe the chances of particular events in politics (election outcomes, civil wars, social movements)
+
+--
+
+- What is the probability that the data come from such-and-such model?
+
+--
+
+- How certain (meaning, uncertain) are we about our findings?
+
+--
+
+- Formal theory: actors have uncertain beliefs about the game/other players, which are represented probabilistically
+
+
+
+
+
+
+---
+
+class: inverse, middle, center
+
+# But before we can do any of that 
+
+### We have to learn some basic math of probability
+
+
+
+
+
+
+
+---
+
+## Agenda
+
+- Counting
+
+- Set theory
+
+- Probability
+
+- Independence, Joint Probability
+
+- Bayes' Theorem
+
+- Looking ahead
+
+
+
+---
+
+## Helpful vocabulary
+
+A **random variable** is a realization of a process that is at least partially random (i.e. unpredictable)
+
+- e.g. coin flip, dice roll
+- Probability enters statistics through the assumptions we make about the type of randomness in a random variable
+
+--
+
+A random variable could have many different potential outcomes (e.g. heads vs. tails). The probability of these outcome could be unequal (e.g. Clinton wins vs. Trump wins). 
+
+--
+
+If we wanted to describe the probability of each potential outcome, we would do so with a *probability distribution.*
+
+- A probability distribution is a *function* which maps potential outcomes to the probability of those outcomes. 
+- `\(x\)` = potential outcome
+- `\(f(x) =\)` probability of `\(x\)`
+- These matter even for formal (non-statistical) models (e.g. utility shocks)
+
+
+
+
+---
+
+class: middle, center
+
+&lt;center&gt;
+  &lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Probability distribution alignments &lt;a href="https://t.co/goBu92Xkbs"&gt;pic.twitter.com/goBu92Xkbs&lt;/a&gt;&lt;/p&gt;&amp;mdash; 𝙼𝚒𝚔𝚎 𝙳𝚎𝙲𝚛𝚎𝚜𝚌𝚎𝚗𝚣𝚘 (@mikedecr) &lt;a href="https://twitter.com/mikedecr/status/971769646113345536?ref_src=twsrc%5Etfw"&gt;March 8, 2018&lt;/a&gt;&lt;/blockquote&gt; 
+  &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+&lt;/center&gt;
+
+
+
+---
+
+## More about probability distributions
+
+Probability distributions can describe discrete outcomes (coin flips) or continuous outcomes (height, vote margin)
+
+--
+
+Probability distributions always sum to 1
+
+- "The law of total probability"
+- Discrete distributions: sum the probabilities of all potential outcomes
+- Continuous distributions: integrate over the continuous space of outcomes
+
+--
+
+Probability distributions are fundamentally where all statistical inference happens
+
+- `\(z\)`-scores, `\(p\)`-values
+- Prior and posterior beliefs
+
+
+
+
+
+
+
+
+---
+
+class: inverse, middle, center
+
+## Counting
+
+
+
+
+---
+
+## Counting
+
+First, what is probability?
+
+--
+
+- The ratio of an event's *expected frequency* to the number of possible events
+--
+
+- We need to count the events in question &amp; total possible outcomes
+
+--
+
+Suppose an **event** is described by `\(K\)` different component parts. (E.g. we roll a die `\(K\)` many times). Each component `\(k = \{1, 2, \ldots, K\}\)` has `\(n_{k}\)` possible values. What is the number of distinct outcomes we could get? 
+
+--
+
+`$$\prod\limits_{k = 1}^{K} n_{k}$$`
+
+(multiply the `\(n_{k}\)`'s)
+
+
+
+---
+
+class: center, middle
+
+I roll a 6-sided die 4 times. How many unique sets of 4 rolls can I obtain (assuming that different orderings of the same 4 numbers are different events). 
+
+
+---
+
+## Complex counting considerations
+
+Does the *order of selection* matter? (is `\(\{1, 2\} = \{2, 1\}\)`)
+
+- No ordering: number of Heads in 100 coin flips
+- Ordering: expected number of flips to find Heads followed by Tails
+
+--
+
+Are selected objects *replaced* (able to be selected again) or *not replaced*?
+
+- Replacement: rolling two dice
+- No replacement: dealing cards
+
+
+
+
+
+---
+
+## Ordering with replacement
+
+This is easiest because (a) no need to adjust for "double-counting" and (b) the number of possibilities is always constant.
+
+The number of possible ways to select `\(k\)` elements from a larger pool of `\(n\)` is
+
+`$$n \times n \times n \times \ldots \times n = n^{k}$$`
+
+Intuition: in each draw, there are `\(n\)` possibilities. Each of `\(n\)` outcomes in one draw can be combined with the `\(n\)` outcomes in any (and all) other draws.
+
+--
+
+How many unique paths through a game of Chutes and Ladders
+
+
+
+---
+
+class: center, middle
+
+### As we add restrictions, counting gets harder
+
+So we have names for different ways of counting
+
+
+
+
+---
+
+## Order, no replacement
+
+Also called **Permutation**.
+
+The number of ways to select `\(k\)` objects from a pool of `\(n\)` possible objects, where order matters but replacement does not occur. 
+
+Intuition: each draw *removes the object* from the larger pool. Subsequent draws have one less element to choose from. 
+
+--
+
+`$$\begin{align}
+  n * (n - 1) * (n - 2) * \ldots * (n - k - 1) = \frac{n!}{(n - k)!}
+\end{align}$$`
+
+--
+
+For example: number of possible ways to deal a card game, lottery numbers, number of possible rankings in a race
+
+
+
+
+
+---
+
+## Unordered, No Replacement
+
+Also called **combinations**: The number of possible ways to select `\(k\)` objects from a pool of `\(n\)` possible objects, where *order does not matter* and *replacement does not occur*
+
+Intuition: we have fewer possibilities than before, substantively identical elements ( `\(A\)` and then `\(B\)`, vs `\(B\)` and then `\(A\)`) are not double counted. 
+
+`$$\begin{align}
+  \frac{n!}{k!(n - k)!} &amp;= {\binom{n}{k}}
+\end{align}$$`
+
+For example: survey samples, raffles, possible groups of 2 in a classroom
+
+
+
+---
+
+## Unordered, with replacement
+
+The number of possible ways to select `\(k\)` elements from a larger pool of `\(n\)` possible elements, where order does not matter and replacement does occur
+
+`$$\frac{(n + k - 1)!}{(n-1)!k!} = \binom{n + k - 1}{k}$$`
+
+Example: Yahtzee dice rolls, the number of heads if you flip a coin `\(n\)` times
+
+
+
+
+
+---
+
+## Exercises
+
+Imagine we rank the 3 top swimmers in this room. 
+
+- Is this a situation where order matters?
+--
+
+- Is this a situation with replacement, or no replacement? 
+--
+
+- How many different possible rankings could there be? 
+
+--
+
+Imagine we have 4 different scholarships for students in this room. You can win more than one scholarship. How many different combinations of winners can there be?
+
+--
+
+Imagine we have 5 identical candies for students in this room. You can win more than 1 candy. How many different combinations of winners can there be? 
+
+--
+
+Imagine we have 2 identical bicycles for students in this room. You can only win 1 candy. How many combinations of winners?
+
+
+
+
+
+
+---
+
+class: center, middle, inverse
+
+## Set theory
+
+
+
+---
+
+## Sets
+
+Remember: a **set** is a collection of elements. Could be numbers, units, areas in space...
+
+.pull-left[
+- `\(F = \{1, 2, 3, 4\}\)`
+- `\(G = \{1, 3, 5\}\)`
+- `\(H = [0, 1] \cup (2, 3)\)`
+
+What are unions? Intersections? Disjoints? Subsets? Supersets?
+]
+
+.pull-right[
+&lt;img width = 90% src="img/sets.png"&gt;
+]
+
+- `\(P = \{\mathrm{Reagan}, \mathrm{Bush41}, \mathrm{Clinton}, \mathrm{Bush43}, \mathrm{Obama}, \mathrm{Trump}\}\)`
+- `\(D = \{\mathrm{Carter}, \mathrm{Mondale}, \mathrm{Dukakis}, \mathrm{Clinton}, \mathrm{Gore}, \mathrm{Kerry}, \mathrm{Obama}, \mathrm{HRC}\}\)`
+- `\(R = \{\mathrm{Reagan}, \mathrm{Bush41}, \mathrm{Dole}, \mathrm{Bush43}, \mathrm{McCain}, \mathrm{Romney}, \mathrm{Trump}\}\)`
+- `\(I = \{\mathrm{Perot}, \mathrm{Nader}\}\)`
+
+
+---
+
+
+
+## The sample space
+
+The **sample space** (denoted `\(S\)` or `\(\Omega\)`) is the set that contains all elements in question. 
+
+Sometimes called the *universal set*
+
+--
+
+Not the same as the set that contains *everything*. Only the relevant things for what we're currently talking about.
+
+
+---
+
+## Complementary sets
+
+The **complement** of set `\(A\)` (denoted as `\(A^{C}\)`) is the set of all elements in the sample space that are *not contained* in `\(A\)`
+
+`$$A^{C} \equiv X \text{ such that } X \notin A$$`
+
+--
+
+Example, `\(\Omega = [0, 1]\)`
+
+- If `\(X = (0, 0.5]\)`, what is `\(X^{C}\)`?
+--
+
+- `\(X^{C} = \{0\} \cup (0.5, 1]\)`
+
+--
+
+What is `\(\Omega^{C}\)`?
+
+--
+
+- `\(\emptyset\)`
+
+
+
+
+---
+
+class: center, middle
+
+## Making sense?
+
+
+
+
+
+---
+
+# Probability (beginning with sets)
+
+
+
+
+
+
+---
+
+## Probability as Sets
+
+We can use sets to represent the probability of events. Total area represents total probability of all events (equal to `\(1\)`). 
+
+&lt;center&gt;
+  &lt;img width = 40% src="img/prob-a.png"&gt;
+&lt;/center&gt;
+
+--
+
+`\(A\)` is an event, and its area is a subset of the total area. 
+
+--
+
+.pull-left[
+`\(\mathrm{Pr}(A)\)`?
+] 
+
+.pull-right[
+`\(\mathrm{Pr}(A^{C})\)`?
+]
+
+
+
+
+---
+
+## Let's play cards
+
+We have 4 suits (hearts, diamonds, spades, clubs) and 13 card values (Ace, 2, 3, ..., Jack, Queen, King). Suits and values can both be sets.
+
+&lt;center&gt;
+&lt;img width = 90% src="img/cards-blank.png"&gt;
+&lt;/center&gt;
+
+--
+
+Total area = 1
+
+Probability of an individual card: `\(\frac{1}{52}\)`
+
+
+
+---
+
+## Properties of probabilities
+
+Probabilities are strictly bounded on the closed interval `\([0, 1]\)`
+
+- `\(p(A) \in [0, 1]\)`
+--
+
+- `\(A\)` is either impossible ( `\(p = 0\)`), certain ( `\(p = 1\)`), or in between (possible, `\(p \in (0, 1)\)`)
+
+--
+
+If we had `\(N\)` many *exhaustive* and *mutually exclusive* set of potential outcomes, their probabilities sum to 1. Which is to say, *something must happen*.
+
+`$$\sum\limits_{n = 1}^{N} p(A_{n}) = 1$$`
+
+
+
+
+
+---
+
+## Probability of complements
+
+If `\(\Omega\)` contains the set of all potential outcomes, and `\(A\)` is an event that is a subset of the outcome space that occurs with `\(p(A)\)`
+
+- What is `\(p(A^{C})\)`?
+
+--
+
+- `\(1 - p(A)\)`
+
+--
+
+The intuition: *Something* must happen, either `\(A\)` or not- `\(A\)`
+
+
+
+
+
+---
+
+## Example of complements
+
+Probability that a random card is a Heart? `\(p(H) = \frac{1}{4}\)`
+&lt;center&gt;
+&lt;img width = 70% src="img/cards-hearts.png"&gt;
+&lt;/center&gt;
+
+--
+
+
+Probability that a card is not a heart? `\(1 - p(H) = \frac{3}{4}\)`
+
+
+
+
+---
+
+## Probability of unions
+
+.pull-left[
+The probability of `\(A \cup B\)`
+
+The probability that *either* `\(A\)` or `\(B\)` occurs
+
+
+
+]
+
+.pull-right[
+&lt;center&gt;
+  &lt;img width = 90% src="img/prob-a.png"&gt;
+&lt;/center&gt;
+]
+
+--
+
+`\(p(A \cup B) = p(A) + p(B) - p(A \cap B)\)`
+
+--
+
+The intuition: the sum of `\(A\)` and `\(B\)` will double count `\(A \cap B\)`, so we need to subtract one instance of `\(A \cap B\)`
+
+
+
+
+
+---
+
+## Probability of Unions
+
+What is the probability that we draw a card that is *either* a heart *or* a face card?
+
+&lt;center&gt;
+  &lt;img width = 80% src="img/cards-union-intersect.png"&gt;
+&lt;/center&gt;
+
+--
+
+`\(p(H) = ?\)`
+
+--
+
+`\(p(F) = ?\)`
+
+--
+
+`\(p(H \cap F) = ?\)`
+
+--
+
+`\(p(H \cup F) = \frac{1}{4} + \frac{12}{52} - \frac{3}{52} = \frac{22}{52}\)`
+
+
+
+
+---
+
+## Probability of intersections
+
+.pull-left[
+The probability of `\(A \cap B\)`
+
+The probability that *both* `\(A\)` and `\(B\)` occur
+]
+
+.pull-right[
+&lt;center&gt;
+  &lt;img width = 90% src="img/prob-a.png"&gt;
+&lt;/center&gt;
+]
+
+--
+
+`$$p(A \cap B) = p(A) + p(B) - p(A \cup B)$$`
+
+The intuition: We care only about the component that we double counted
+
+
+
+
+---
+
+## Probability of intersections
+
+What is the probability that we draw a card that is *both* a heart *and* a face card?
+
+&lt;center&gt;
+  &lt;img width = 80% src="img/cards-union-intersect.png"&gt;
+&lt;/center&gt;
+
+--
+
+`\(p(H) = ?\)`
+
+--
+
+`\(p(F) = ?\)`
+
+--
+
+`\(p(H \cup F) = ?\)`
+
+--
+
+`\(p(H \cap F) = \frac{1}{4} + \frac{12}{52} - \frac{22}{52} = \frac{3}{52}\)`
+
+
+
+
+
+
+
+
+---
+
+## Conditional probability
+
+The probability of `\(A\)`, given `\(B\)`, is expressed as `\(p(A \mid B)\)`
+
+.pull-left[
+
+What is the probability of `\(A\)`, given that `\(B\)` also occurs?
+
+]
+
+.pull-right[
+&lt;center&gt;
+  &lt;img width = 70% src="img/prob-a.png"&gt;
+&lt;/center&gt;
+]
+
+--
+
+`$$p(A \mid B) = \frac{p(A \cap B)}{p(B)}$$`
+
+The intuition:
+
+- If we *know* that `\(B\)` happened, we only care about the space within `\(B\)`
+--
+
+- the probability that both `\(A\)` and `\(B\)` happen, divided by the probability of `\(B\)` 
+--
+
+- `\(p(\mathrm{intersection}) \; / \; p(\text{conditioning event})\)`
+
+
+
+
+---
+
+## Conditional probability
+
+&lt;center&gt;
+  &lt;img width = 80% src="img/cards-blank.png"&gt;
+&lt;/center&gt;
+
+--
+
+What is the probability of drawing the Ace of Diamonds? 
+
+--
+
+What is the probability of drawing the Ace of Diamonds, *given that* we have have drawn an Ace?
+
+--
+
+- `\(p(\text{Ace of Diamonds}) = \frac{1}{52}\)`
+--
+
+- `\(p(\mathrm{Ace}) = \frac{4}{52}\)`
+--
+
+- `\(p(\text{Ace of Diamonds} \mid \mathrm{Ace}) = \frac{{1/52}}{{4/52}} = \frac{1}{4}\)`
+
+
+
+
+---
+
+## What's the probability?
+
+
+&lt;center&gt;
+  &lt;img width = 80% src="img/cards-blank.png"&gt;
+&lt;/center&gt;
+
+`\(p(\{8, 9, 10\})\)`
+
+`\(p(\{5, 6\} \cup \{6, 10\})\)`
+
+`\(p(A \mid H^{C})\)`
+
+
+
+
+---
+
+## The notion of *independence*
+
+Two events are **independent** if knowing the outcome of one event does not change the probability of the other
+
+--
+
+.pull-left[
+
+&lt;center&gt;
+Independent
+  &lt;img width = 75% src="img/shapes-ind.png"&gt;
+&lt;/center&gt;
+
+`$$p(B) = p(B \mid A)$$`
+]
+
+--
+
+.pull-right[
+
+&lt;center&gt;
+Dependent
+  &lt;img width = 75% src="img/shapes-dep.png"&gt;
+&lt;/center&gt;
+
+`$$p(B) \neq p(B \mid A)$$`
+
+]
+
+
+
+
+---
+
+## Independence of Events
+
+Is drawing a face card independent of drawing a face card?
+
+&lt;center&gt;
+  &lt;img width=80% src="img/cards-ind.png"&gt;
+&lt;/center&gt;
+
+--
+
+`\(p(F \mid H) = \frac{3}{13}\)`
+
+--
+
+`\(p(F) = \frac{12}{52} = \frac{3}{13}\)`
+
+
+---
+
+## Independence of Events
+
+What about drawing a face card independent of drawing a card greater than 8?
+
+&lt;center&gt;
+  &lt;img width=80% src="img/cards-dep.png"&gt;
+&lt;/center&gt;
+
+--
+
+`\(p(X = F \mid X &gt; 8) = \frac{12}{20} = \frac{3}{5}\)`
+
+--
+
+`\(p(F) = \frac{12}{52} = \frac{3}{13}\)`
+
+
+
+
+
+
+
+---
+
+## Joint probability
+
+What we're doing here is considering the probability of *multiple events*
+
+**Joint probability**: the probability of *more than one event* occurring simultaneously
+
+--
+
+`\(p(A, B) \equiv p(A) \cap p(B)\)`
+
+--
+
+The exact equation for the joint probability depends on whether the events are *independent*
+
+
+
+
+---
+
+##  Joint probability of independent events
+
+This is the easy stuff. If multiple events are independent of one another, the joint probability of all events is the *product* of the individual probabilities.
+
+--
+
+Example, we flip three coins independently of one another. What's the probability of the sequence `\(\{H, H, H\}\)`?
+
+--
+
+`$$\begin{align}
+  p(H) \times p(H) \times p(H) &amp;= .5 \times .5 \times .5 \\
+  &amp;= 0.125
+\end{align}$$`
+
+
+
+
+
+---
+
+### So we've got two bowls
+
+&lt;center&gt;
+  &lt;img src="img/urns.png" width = 80%&gt;
+&lt;/center&gt;
+
+If we draw a ball from each earn, what is the joint probability of...
+
+- `\(p(\mathrm{blue, green}) =\)` ?
+
+- `\(p(\mathrm{blue, yellow}) =\)` ?
+
+- `\(p(\mathrm{red, green}) =\)` ?
+
+- `\(p(\mathrm{red, yellow}) =\)` ?
+
+
+
+
+---
+
+### So we've got two bowls
+
+&lt;center&gt;
+  &lt;img src="img/urns.png" width = 80%&gt;
+&lt;/center&gt;
+
+If we draw a ball from each earn, what is the joint probability of...
+
+- `\(p(\mathrm{blue, green}) = \left( \frac{40}{50} \right)\left( \frac{30}{50}    \right) = (.8)(.6) = .48\)`
+
+- `\(p(\mathrm{blue, yellow}) = \left( \frac{40}{50} \right)\left( \frac{20}{50}     \right) = (.8)(.4) = .32\)`
+
+- `\(p(\mathrm{red, green}) = \left( \frac{10}{50} \right)\left( \frac{30}{50}    \right) = (.2)(.6) = .12\)`
+
+- `\(p(\mathrm{red, yellow}) = \left( \frac{10}{50} \right)\left( \frac{20}{50}     \right) = (.2)(.4) = .08\)`
+
+--
+
+Because these are mutually exclusive and exhaustive events, probabilities sum to 1
+
+
+
+
+
+
+
+---
+
+Imagine we flip a coin. If heads, we draw a ball from the left bowl. If tails, we draw from the right. 
+
+&lt;center&gt;
+  &lt;img src="img/complex-urns.png" width = 80%&gt;
+&lt;/center&gt;
+
+--
+
+This means there are two ways to choose a blue ball: `\(\{A, \mathrm{blue}\}\)` and `\(\{B, \mathrm{blue}\}\)`
+
+--
+
+- `\(p(A,  \mathrm{blue}) = 0.5 * \frac{45}{50} = 0.45\)`
+- `\(p(B,  \mathrm{blue}) = 0.5 * \frac{20}{50} = 0.20\)`
+
+--
+
+Total probability of blue is the sum of the joint probabilities (a very useful principle...)
+
+--
+
+`$$\begin{align}
+  p(\mathrm{blue}) &amp;= p(\mathrm{blue} \mid A) + p(\mathrm{blue} \mid B) \\
+  &amp;= p(\mathrm{blue} \mid A) + p(\mathrm{blue} \mid A^{C})
+\end{align}$$`
+
+
+
+---
+
+## Thinking about order and replacement
+
+We draw 5 balls from one urn, replacing each time. We get the following sequence:
+
+.pull-left[
+&lt;center&gt;
+  &lt;img src="img/one-urn.png" width=90%&gt;
+&lt;/center&gt;
+]
+
+.pull-right[
+
+`\(\{\mathrm{blue}, \mathrm{red}, \mathrm{blue}, \mathrm{blue}, \mathrm{red}\}\)`
+
+The probability of *this specific sequence* is `\(.3 * .7 * .3 * .3 * .7 = 0.01323\)`,
+
+or if we simplify: `\(0.3^{3}0.7^{2}\)`
+
+]
+
+Imagine we don't care about the order, just the probability of three blues (which implies two reds)
+
+--
+- The *total probability* of 3 blues: sum the `\(p\)` of every sequence that has 3 blues
+--
+
+- Any individual sequence that with 3 blues has probability `\(0.01323\)` (above)
+--
+
+- We just need the *number of ways* to get 3 blues with 5 draws
+
+--
+
+`$$\begin{align}
+  \left(\frac{5!}{3!(5 - 3)!}\right)(.3)^3(.7)^2 &amp;= \binom{5}{3}(.3)^3(.7)^2 = (10)(.01323) = .1323
+\end{align}$$`
+
+
+
+
+
+
+
+
+---
+
+### (Spooky voice) "Inverse conditional probabilityyyy"
+
+&lt;center&gt;
+  &lt;img src="img/urn-bayes.png" width = 80%&gt;
+&lt;/center&gt;
+
+Someone flips a coin to decide whether to draw a ball from bowl `\(A\)` or `\(B\)` (each with 50% probability), but the bowl is hidden from us.
+
+--
+
+- What is the probability of drawing from bowl `\(A\)`?
+
+--
+
+- We've drawn a *blue* ball. What's the probability that we drew from `\(A\)`?
+
+--
+
+"Inverse" conditional probability problem: 
+
+- It's easy to find `\(p(\mathrm{blue} \mid A)\)`, 
+- but how can we *invert* it to find `\(p(A \mid \mathrm{blue})\)`?
+
+
+
+
+
+---
+
+### Find `\(p(A \mid \mathrm{blue})\)`
+
+&lt;center&gt;
+  &lt;img src="img/urn-bayes.png" width = 80%&gt;
+&lt;/center&gt;
+
+How do we approach any conditional probability problem? 
+
+--
+
+`$$p(y \mid x) = \dfrac{p(y \, \cap \, x)}{p(x)}$$`
+
+--
+
+So what do we need for `\(p(A \mid \mathrm{blue})\)`?
+--
+
+- `\(p(A \cap \mathrm{blue})\)`
+
+--
+
+- `\(p(\mathrm{blue})\)`
+
+
+
+
+
+---
+
+### Find `\(p(A \mid \mathrm{blue})\)`
+
+
+&lt;center&gt;
+  &lt;img src="img/urn-bayes.png" width = 80%&gt;
+&lt;/center&gt;
+
+`\(p(A \cap \mathrm{blue})\)`?
+--
+
+- `\((0.5)(0.9) = 0.45\)`
+- This is (associatively) the same as `\(p(\mathrm{blue} \mid A)p(A)\)`
+
+--
+
+`\(p(\mathrm{blue})\)`?
+
+- `\(p(A \cap \mathrm{blue}) + p(B \cap \mathrm{blue})\)`
+--
+
+- `\((0.5)(0.9) + (0.5)(0.4) = 0.45 + 0.20 = 0.65\)`
+
+
+
+
+---
+
+### Find `\(p(A \mid \mathrm{blue})\)`
+
+`$$\begin{align}
+  p(A \mid \mathrm{blue}) &amp;= \frac{p(A \cap \mathrm{blue})}{p(\mathrm{blue})} \\[6pt]
+  p(A \mid \mathrm{blue}) &amp;= \frac{p(\mathrm{blue} \mid A)p(A)}{p(\mathrm{blue})} \\[6pt]
+  p(A \mid \mathrm{blue}) &amp;= \frac{0.45}{0.65} &amp;\approx 0.69
+\end{align}$$`
+
+--
+
+This is **inverse conditional probability**: how we find `\(p(A \mid \mathrm{blue})\)` by starting with `\(p(\mathrm{blue} \mid A)\)`.
+
+
+
+
+
+---
+
+class: center, middle
+
+## We just did Bayes' theorem
+
+Congratulations, you're Bayesians now
+
+
+---
+
+## Bayes' Theorem
+
+
+--
+
+Generally it's true that `\(p(x \mid y) = \dfrac{p(x \, \cap \, y)}{p(y)} = \dfrac{p(x \, \cap \, y)}{p(y \, \cap \, x) + p(y \, \cap \, x^{c})}\)`
+
+--
+
+Bayes' Theorem describes how to find solve equation by beginning with its inverse
+
+`$$\begin{align}
+  p(x \mid y) = \frac{p(y \mid x)p(x)}{p(y)}
+\end{align}$$`
+
+--
+
+Or, more generally
+
+
+`$$\begin{align}
+  p(x \mid y) &amp;= \frac{p(y \mid x)p(x)}{p(y \mid x)p(x) + p(y \mid x^{c})p(x^{c})}
+\end{align}$$`
+
+
+
+
+
+
+
+---
+
+## A common Bayes example
+
+A rare disease occurs in .01% of the population. We have a test for it, but it isn't perfect. 98% of individuals with the condition will test positive (1% false negative). 97% of those without the condition test negative (3% false positive). 
+
+--
+
+You get the test done. The test is positive.
+
+--
+
+What's the probability that you have the disease? 
+
+--
+
+- **Prior probability:** .01% you have the disease
+- What is the **updated (posterior) probability** that you have the disease, *given that you test positive*
+
+
+
+---
+
+## Applying Bayes
+
+`$$\begin{align}
+  \text{Posterior probability} &amp;= \frac{p(\mathrm{data} \mid \mathrm{prior}) \times \mathrm{prior}}{p(\mathrm{data})} \\[6pt]
+  p(\mathrm{disease} | +) &amp;= \frac{p(+ \, \cap \, \mathrm{disease})}{p(+)} \\[6pt]
+  p(\mathrm{disease} | +) &amp;= \frac{p(+ \, \cap \, \mathrm{disease})}{p(+ \, \cap \, \mathrm{disease}) + p(+ \, \cap \, \mathrm{disease}^{c})} \\[6pt]
+  p(\mathrm{disease} | +) &amp;= \frac{p(+ \mid \mathrm{disease})p(\mathrm{disease})}{p(+ \mid \mathrm{disease})p(\mathrm{disease}) + p(+ \mid \mathrm{disease}^{c})p(\mathrm{disease}^{c})} \\[6pt]
+  .003 &amp;\approx \frac{(.98)(.0001)}{(.98)(.0001) + (.03)(.9999)}
+\end{align}$$`
+
+--
+
+If our prior is .01% chance of disease, a positive test *revises the probability* to .3%. 
+
+--
+
+This is called *Bayesian updating*
+
+
+
+---
+
+## Why Bayes is hard
+
+Take a look at the denominator of Bayes' theorem
+
+`$$\text{Posterior probability} = \frac{p(\mathrm{data} \mid \mathrm{prior}) \times \mathrm{prior}}{p(\mathrm{data \mid \mathrm{prior}})\mathrm{prior} + p(\mathrm{data \mid \mathrm{prior}^{c}})\mathrm{prior}^{c}}$$`
+
+Imagine we have a continuous prior. E.g. we believe that the probability of a coin flip is *close to 0.5* but we are a little uncertain (due to the weight of the coin sides). 
+
+--
+
+In situations like this, our prior takes the form of a continuous probability distribution where each potential value has an associated probability. 
+
+--
+
+If we have a continuous parameter, summing anything across all values (e.g. `\(\mathrm{prior}^{c}\)`) means integrating. And integrating is hard. 
+
+--
+
+As a result, if you ever want to do Bayesian analysis for your own research, it tends to be computationally expensive (slow) and somewhat approximate.
+
+--
+
+Moreover, our results are *distributions*, not just single estimates.
+
+
+---
+
+### A continuous example
+
+We think that the probability of a "heads" on a coin is most likely 0.5, but we aren't certain about that. We flip the coin 12 times and find 10 heads. What is our revised belief?
+
+&lt;img src="lecture-4-probability_files/figure-html/bayes_coin-1.png" width="500" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+## Wait, how can "beliefs" affect probability?
+
+Depends what we're talking about. There are two big ways to think about probability:
+
+--
+
+1. Over a large number of repeated, controlled trials, probability is the fraction of trials in which an event occurs.
+
+--
+
+2. Probability is never something that we *know*, only something that we learn about. Given our most reasonable information and evidence about the setting, how likely is an event?
+
+--
+
+More generally, we are interested in estimating unknown parameters in a mathematical model of a social interaction.
+
+--
+
+1. The parameter is unknown but *fixed*. There is an honest-to-god true value, and we are estimating it using data.
+
+--
+
+2. The parameter is unknown, and our information about it will always be imperfect. The information we obtain (*conditioning on* our model, on our data) can only approximate a *distribution* of possible values that are more or less plausible.
+
+
+---
+
+## The two statistical genders
+
+--
+
+.pull-left[
+"Frequentism"
+
+- Statistical properties come from repeated sampling assumptions
+- There exists a true parameter, which we estimate
+- We can calculate probability that our data were created by different assumed parameter values
+- Low probability of data can be used to reject parameter values
+- Focus is on the probability of the *data*, assuming a fixed parameter
+]
+
+
+
+--
+
+.pull-left[
+"Bayesianism"
+
+- Statistical properties come from *posterior distribution*
+- Parameters are "random" as in, not fixed, only approximated with a distribution
+- We have prior notions about plausible parameter values
+- We can estimate the likelihood of data at different prior values
+- Data updates our prior to form posterior beliefs
+- Focus is on the probability of the *parameter*, updating a prior with data
+]
+
+
+
+---
+
+class: center, middle
+
+### If you ask me
+
+While Frequentism itself is not evil, it has been *made evil* by research that regularly abuses its underlying epistemic logic. This culture of abuse (which I call the Frequentist Menace&amp;trade;) is a pox on the scientific method and it must be destroyed
+
+but I hold a minority view!
+
+
+
+
+---
+
+class: center, middle, inverse
+
+# Looking ahead
+
+
+
+
+
+---
+
+## Methods courses
+
+If you want to understand statistical work in political science, you should do:
+
+- 812, 813, MLE
+- Empirical methods (817)
+
+Formal theory courses:
+
+- 835 (game theory)
+- Formal models of domestic (836?) and international (837?) politics
+
+Advanced methods courses include
+
+- Multilevel modeling, Time series, Panel data, Bayesian analysis, Experimental methods
+
+
+Courses outside the department:
+
+- Ag econ: applied regression, choice models
+- Sociology: causal inference, networks(?)
+- Statistics: networks, machine learning
+
+
+
+---
+
+## Methods pathways
+
+Take the foundations courses no matter what
+
+First field: "I want to study *how to study* politics". You still need a substantive interest
+
+Second field: "I want to teach and research about/use new methods," not just, "I can do statistics okay"
+
+Minor field: 3 courses (see reqs)
+
+
+---
+
+## My advice for methods courses
+
+Take as many as you feasibly can. No, really. Soak it up.
+
+Don't delay MLE. 
+
+Even if you a qualitative researcher, the *epistemological* lessons of large-N analysis are valuable. 
+
+If you're going to *read* empirical social science, you should take empirical social science courses.
+
+Pick something you like and get good at it
+
+- Time series, Bayes, text as data, matching, causal inference, experiments
+
+Do replication projects
+
+
+
+---
+
+## My advice for methods in the *discipline*
+
+Learn an unfamiliar method from a different field/subfield and apply it to your interests
+
+Take the open science and the "replication crisis" seriously
+
+Take math seriously (it helps you ride the learning curve)
+
+Be a [plain text social scientist](http://plain-text.co/) (take your computer seriously)
+
+Learn `\(\mathrm{\LaTeX}\)`, learn R, learn `git`. Stata works but tbh I think we're way past the inflection point
+
+If you might leave academia for data science, consider Python and machine learning
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="https://platform.twitter.com/widgets.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

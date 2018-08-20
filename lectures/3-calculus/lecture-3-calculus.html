@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Math Camp Lesson 3</title>
+    <meta charset="utf-8">
+    <meta name="author" content="UW–Madison Political Science" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Math Camp Lesson 3
+## Calculus
+### UW–Madison Political Science
+### August 22 &amp; 23, 2018
+
+---
+
+
+## Overview
+
+
+&lt;!-- include setup --&gt;
+
+
+
+Calculus evaluates the behavior of functions:
+- Increasing/decreasing
+- Rate of change
+- Change in the rate of change
+- Area of the region they define
+
+--
+
+Concepts from calculus underlie a wide variety of mathematics, particularly in the applied math that we use in political science
+
+---
+
+## Calculus in Political Science
+
+Finding the fitline with the minimal distance between predicted and observed data.
+
+--
+
+Calculating the probability density in regions of continuous distributions.
+
+--
+
+Solving for the choice that maximizes a decision maker's utility.
+
+
+---
+
+## Agenda
+
+Day 1
+  - Limits
+  - Derivatives
+
+Day 2
+  - More Derivatives
+  - Integrals
+  - Applications
+  
+---
+
+## Limits
+
+--
+
+The first important idea on the way to understanding calculus is that of a limit. 
+
+--
+
+The limit of a function characterizes its behavior given a certain input, or as an input value changes.
+
+---
+
+## Limits (cont'd)
+
+--
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-1-1.png" width="700" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider the simple function, `\(f(x) = y = 3-(x-2)^2\)`, plotted to the left. What is the limit of `\(f(x)\)` as `\(x\)` *approaches* 2?]
+
+ 
+---
+
+## Limits (cont'd)
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-2-1.png" width="700" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider the simple function, `\(f(x) = y = 3-(x-2)^2\)`, plotted to the left. What is the limit of `\(f(x)\)` as x *approaches* 2?
+
+As `\(x\)` approaches 2,  `\(f(x)\)` or `\(y\)` approaches `\(f(2) = 3\)`.  
+
+]
+
+---
+
+## Limits (cont'd)
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-3-1.png" width="700" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider a less simple function, `\(g(x) = y = 3-\frac{1}{x}\)`, plotted to the left. What is the limit of `\(g(x)\)` as `\(x\)` *approaches* `\(\infty\)`?]
+
+ 
+---
+
+## Limits (cont'd)
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-4-1.png" width="700" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider a less simple function, `\(g(x) = y = 3-\frac{1}{x}\)`, plotted to the left. What is the limit of `\(g(x)\)` as `\(x\)` *approaches* `\(\infty\)`?
+
+As `\(x\)` approaches `\(\infty\)`, `\(g(x)\)` approaches 3. Why?
+
+]
+
+---
+
+## Limits (cont'd)
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-5-1.png" width="700" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider a less simple function, `\(g(x) = y = 3-\frac{1}{x}\)`, plotted to the left. What is the limit of `\(g(x)\)` as `\(x\)` *approaches* `\(\infty\)`?
+
+As `\(x\)` approaches `\(\infty\)`, `\(g(x)\)` approaches 3. Why?
+
+As `\(x\)` gets larger, `\(\frac{1}{x}\)` gets smaller and smaller. `$$\left(\frac{1}{2} &gt; \frac{1}{20} &gt; \frac{1}{200} \dots\right)$$`
+
+]
+
+---
+## Limits
+
+--
+
+Formally, limits are expressed as:
+
+--
+
+`\begin{align}
+\lim_{x \to c} f(x) = L
+\end{align}`
+
+--
+
+This expression should be read as: ''As `\(x\)` approaches `\(c\)`, the limit of `\(f(x)\)` is `\(L\)`.''
+
+--
+
+Many times, you will often see this expression written as `\(\lim\limits_{x \to c^{-}} f(x) = L\)` or `\(\displaystyle\lim_{x \to c^{+}} f(x) = L\)`. A negative sign `\((-)\)` implies "As `\(x\)` approaches `\(c\)` *from the left*" and a positive sign `\((+)\)` implies "As `\(x\)` approaches `\(c\)` *from the right*"
+
+---
+
+## Tips for Taking Limits
+
+--
+
+Simplify as much as possible.
+
+--
+
+Separate out into operations on limits of distinct elements. Move constants outside the limit operator.
+
+
+--
+
+Watch out for components that `\(\dots\)`
+  - `\(\dots\)` grow very large or very small
+  - `\(\dots\)` become zero?
+
+--
+
+Are these components in the numerator or denominator of a fraction?
+
+--
+
+If you can, evaluate the function at the limit.
+
+--
+
+For functions that are well-behaved (continuous), the limit as x approaches a finite point is generally the value of the function at that point (if it exists)
+
+---
+
+
+## Examples of Limits
+
+--
+
+Let's consider `\(\displaystyle\lim_{x \to 2} x^2-3x +1\)`
+
+--
+
+`\begin{align}
+\displaystyle\lim_{x \to 2} x^2-3x +1 &amp;= \lim_{x \to 2} x^2-2x +1 \\
+&amp;= \lim_{x \to 2} x^2 -2\lim_{x \to 2}x + \lim_{x \to 2} 1 \\
+&amp;= 2^2 - 2(2)+ 1 \\
+&amp;= 1
+\end{align}`
+
+---
+## Examples of Limits (cont'd)
+
+Now, let's consider `\(\displaystyle\lim_{x \to \infty} \frac{4x^4+7x^2+8}{3x^4}\)`
+
+--
+`\begin{align}
+\displaystyle\lim_{x \to \infty} \frac{4x^4+7x^2+8}{3x^4} &amp;= \lim_{x \to \infty} \frac{4x^4+7x^2+8}{3x^4} \\
+&amp;= \lim_{x \to \infty}  \frac{4x^4}{3x^4} + \lim_{x \to \infty} \frac{7x^2}{3x^4}+ \lim_{x \to \infty}  \frac{8}{3x^4} \\
+&amp;= \lim_{x \to \infty}  \frac{4}{3} + \lim_{x \to \infty} \frac{7}{3x^2}+ \lim_{x \to \infty}  \frac{8}{3x^4} \\
+&amp;= \frac{4}{3} + 0 + 0 \\
+&amp;= \frac{4}{3} 
+\end{align}`
+
+---
+
+## Examples of Limits (cont'd)
+
+--
+Let's consider `\(\displaystyle\lim_{x \to 0} \frac{4x^4+7x^2 +8}{3x^4}\)`
+
+--
+
+`\begin{align}
+&amp;= \lim_{x \to 0} \frac{4x^4+7x^2 +8}{3x^4} \\
+&amp;= \frac{\displaystyle\lim_{x \to 0}  4x^4+7x^2 +8}{\displaystyle\lim_{x \to 0}  3x^4} \\
+&amp;= \frac{4(0)^4+7(0)^2 +8}{\displaystyle\lim_{x \to 0}  3x^4} \\
+&amp;= 8\lim_{x \to 0}\frac{1}{3x^4} \\
+&amp;= 8 \times \frac{1}{0}
+\end{align}`
+
+---
+
+  &lt;img width = 100% src="img/limit.jpg"&gt;
+
+---
+
+## Just Kidding
+
+--
+
+The limit does exist but the limit is `\(\infty\)`.
+
+--
+`\begin{align}
+&amp;= \lim_{x \to 0} \frac{4x^4+7x^2 +8}{3x^4} \\
+&amp;= 8\lim_{x \to 0}\frac{1}{3x^4} \\
+&amp;= 8 \times \frac{1}{0} \\
+&amp;= \infty
+\end{align}`
+
+
+As `\(x\)` approaches `\(0\)`, the function retains some positive value in the numerator while denominator *positively* approach 0. This means that you are dividing by a smaller and smaller fraction, which the entire term is getting larger and approaches `\(\infty\)`.  
+
+---
+
+class: center, middle
+
+
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-6-1.png" width="600" style="display: block; margin: auto;" /&gt;
+
+---
+## Derivatives
+
+--
+The derivative of a function is its rate of change in the output as the value of its input changes.
+
+--
+
+The instantaneous slope of the line at any given point.
+
+--
+
+
+The slope of a function is how much the output changes as a result of changes in the input. Using `\(\Delta\)` to signify ‘change’, this is 
+`\(\frac{\Delta f(x)}{\Delta x} = \frac{f(x_2)-f(x_1)}{x_2-x_1}\)` or ''rise-over-run''.
+
+---
+
+## Slope
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-7-1.png" width="400" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider the function, `\(y = 3\)`, plotted to the left. What is its ''slope''?
+]
+
+---
+
+## Slope
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-8-1.png" width="400" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider the function, `\(y = 3\)`, plotted to the left. What is its ''slope''?
+
+Its slope or `\(\frac{\Delta f(x)}{\Delta x} = 0\)` because there is no "rise".
+]
+
+---
+
+
+## Slope
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-9-1.png" width="400" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider a less simple function, `\(y = \frac{1}{2}x+1\)`, plotted to the left. What is its ''slope''?
+]
+
+---
+
+## Slope
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-10-1.png" width="400" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider a less simple function, `\(y = \frac{1}{2}x+1\)`, plotted to the left. What is its ''slope''?
+
+Its slope or `\(\frac{\Delta f(x)}{\Delta x} = \frac{1}{2}\)`. [Recall: `\(y =mx +b\)` from Day 1]
+]
+
+---
+
+## Slope
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-11-1.png" width="400" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider even more complicated function, `\(y = x-x^2\)`, plotted to the left. What is its ''slope''?
+]
+
+---
+
+## Slope
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-12-1.png" width="400" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider even more complicated function, `\(y = x-x^2\)`, plotted to the left. What is its ''slope''?
+
+Its slope or `\(\frac{\Delta f(x)}{\Delta x} = ???\)` 
+]
+
+---
+
+## Derivatives as a Limit
+
+Approximate the slope at a certain location by picking a point nearby on the line and finding the slope of the straight line connecting them.
+
+--
+
+Let's consider a few examples of this
+
+---
+
+class: center, middle
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-13-1.png" width="600" style="display: block; margin: auto;" /&gt;
+---
+class: center, middle
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-14-1.png" width="600" style="display: block; margin: auto;" /&gt;
+---
+class: center, middle
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-15-1.png" width="600" style="display: block; margin: auto;" /&gt;
+---
+
+class: center, middle
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-16-1.png" width="600" style="display: block; margin: auto;" /&gt;
+---
+class: center, middle
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-17-1.png" width="600" style="display: block; margin: auto;" /&gt;
+---
+## Derivatives as a Limit
+
+When the interval is wide, it is not a good approximation. But as the interval shrinks, the appoximation becomes better.
+
+--
+
+So, as you reduce the interval size to `\(0\)`, this line converges in the limit to the line that lies tangent to the curve at that point. Recall that `\(f(x) = x − x^2\)` and consider a very small interval `\(\epsilon \dots\)`
+
+--
+
+`\begin{align}
+\frac{\Delta f(x)}{\Delta x} &amp;= \lim_{\epsilon \to 0}\frac{f(x+\epsilon)-f(x)}{(x+\epsilon)-\epsilon}
+\end{align}`
+
+---
+## Derivatives as a Limit
+
+
+When the interval is wide, it is not a good approximation. But as the interval shrinks, the appoximation becomes better.
+
+So, as you reduce the interval size to `\(0\)`, this line converges in the limit to the line that lies tangent to the curve at that point. Recall that `\(f(x) = x − x^2\)` and consider a very small interval `\(\epsilon \dots\)`
+
+
+
+`\begin{align}
+\frac{\Delta f(x)}{\Delta x} &amp;= \lim_{\epsilon \to 0}\frac{f(x+\epsilon)-f(x)}{(x+\epsilon)-\epsilon} \\
+&amp;= \lim_{\epsilon \to 0} \frac{[(x+\epsilon)-(x+\epsilon)^2]-[(x)-(x)^2]}{(x+\epsilon)-x} 
+\end{align}`
+
+
+---
+
+## Derivatives as a Limit
+
+
+When the interval is wide, it is not a good approximation. But as the interval shrinks, the appoximation becomes better.
+
+So, as you reduce the interval size to `\(0\)`, this line converges in the limit to the line that lies tangent to the curve at that point. Recall that `\(f(x) = x − x^2\)` and consider a very small interval `\(\epsilon \dots\)`
+
+
+
+`\begin{align}
+\frac{\Delta f(x)}{\Delta x} &amp;= \lim_{\epsilon \to 0}\frac{f(x+\epsilon)-f(x)}{(x+\epsilon)-\epsilon} \\
+&amp;= \lim_{\epsilon \to 0} \frac{[(x+\epsilon)-(x+\epsilon)^2]-[(x)-(x)^2]}{(x+\epsilon)-x}  \\
+&amp;=\lim_{\epsilon \to 0} \frac{[x+\epsilon -(x^2+2\epsilon x+\epsilon^2)]-[(x)-(x)^2]}{(x+\epsilon)-x}  
+\end{align}`
+
+
+---
+
+
+## Derivatives as a Limit
+
+
+When the interval is wide, it is not a good approximation. But as the interval shrinks, the appoximation becomes better.
+
+So, as you reduce the interval size to `\(0\)`, this line converges in the limit to the line that lies tangent to the curve at that point. Recall that `\(f(x) = x − x^2\)` and consider a very small interval `\(\epsilon \dots\)`
+
+
+
+`\begin{align}
+\frac{\Delta f(x)}{\Delta x} &amp;= \lim_{\epsilon \to 0}\frac{f(x+\epsilon)-f(x)}{(x+\epsilon)-\epsilon} \\
+&amp;= \lim_{\epsilon \to 0} \frac{[(x+\epsilon)-(x+\epsilon)^2]-[(x)-(x)^2]}{(x+\epsilon)-x}  \\
+&amp;=\lim_{\epsilon \to 0} \frac{[x+\epsilon -(x^2+2\epsilon x+\epsilon^2)]-[(x)-(x)^2]}{(x+\epsilon)-x}   \\
+&amp;=\lim_{\epsilon \to 0} \frac{x+\epsilon -x^2-2\epsilon x-\epsilon^2 -x+x^2}{x+\epsilon-x}
+\end{align}`
+
+
+---
+
+
+## Derivatives as a Limit
+
+
+`\begin{align}
+\frac{\Delta f(x)}{\Delta x} &amp;= \lim_{\epsilon \to 0} \frac{x+\epsilon -x^2-2\epsilon x-\epsilon^2 -x+x^2}{x+\epsilon-x}
+\end{align}`
+
+---
+## Derivatives as a Limit
+
+
+`\begin{align}
+\frac{\Delta f(x)}{\Delta x} &amp;= \lim_{\epsilon \to 0} \frac{x+\epsilon -x^2-2\epsilon x-\epsilon^2 -x+x^2}{x+\epsilon-x} \\
+&amp;= \lim_{\epsilon \to 0} \frac{\epsilon- 2\epsilon x-\epsilon^2}{\epsilon}
+\end{align}`
+
+---
+
+## Derivatives as a Limit
+
+
+`\begin{align}
+\frac{\Delta f(x)}{\Delta x} &amp;= \lim_{\epsilon \to 0} \frac{x+\epsilon -x^2-2\epsilon x-\epsilon^2 -x+x^2}{x+\epsilon-x} \\
+&amp;= \lim_{\epsilon \to 0} \frac{\epsilon- 2\epsilon x-\epsilon^2}{\epsilon} \\
+ &amp;= \lim_{\epsilon \to 0} 1- 2 x-\epsilon
+\end{align}`
+
+---
+
+## Derivatives as a Limit
+
+
+`\begin{align}
+\frac{\Delta f(x)}{\Delta x} &amp;= \lim_{\epsilon \to 0} \frac{x+\epsilon -x^2-2\epsilon x-\epsilon^2 -x+x^2}{x+\epsilon-x} \\
+&amp;= \lim_{\epsilon \to 0} \frac{\epsilon- 2\epsilon x-\epsilon^2}{\epsilon} \\
+&amp;= \lim_{\epsilon \to 0} 1- 2 x-\epsilon \\
+&amp;= 1- 2x
+\end{align}`
+
+---
+## Derivative as a Limit
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-18-1.png" width="700" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Using this formula, the slope of the curve at `\(x = .3\)`, or the point from the previous examples, is exactly:
+
+
+`\begin{align}
+\text{slope} &amp;= 1 - 2(.3) \\
+&amp;= 0.4
+\end{align}`
+
+
+Alternatively, we could find the point at which the slope is exactly `\(0\)`, or:
+
+
+`\begin{align}
+0 &amp;= 1 - 2x \\
+2x &amp;= 1 \\
+x &amp;= 0.5
+\end{align}`
+]
+
+---
+## Derivatives
+
+Now, we can formally state that the derivative is equivalent to:
+
+`\begin{align}
+\frac{d[f(x)]}{dx} = \lim_{\epsilon \to 0}\frac{f(x+\epsilon)-f(x)}{(x+\epsilon)-\epsilon}
+\end{align}`
+
+--
+
+Using this approach, we can find:
+
+  - A general equation for the slope at any point
+  - The exact value of the slope at a given point
+  - The point that has a given slope
+---
+
+## Derivative notation
+
+Different notation systems for expressing derivatives:
+
+--
+
+First derivative: `\(\frac{d[f(x)]}{dx}\)`, `\(\frac{d}{dx}[f(x)]\)`, `\(f'(x)\)`, or `\(f^1(x)\)`
+
+--
+
+Second derivative: `\(\frac{d^2[f(x)]}{dx^2}\)`, `\(\frac{d^2}{dx^2}[f(x)]\)`, `\(f''(x)\)`, or `\(f^2(x)\)`
+
+--
+
+I'll be using `\(f'(x)\)` and `\(f''(x)\)` but you are free to choose whatever makes sense to you!
+
+---
+## Cautionary Notes on Derivatives
+
+A few assumptions in using this approach to find the slope: 
+
+- The function is continuous (no gaps or jumps)
+- The derivative exists (the limit of the slope is the same from the left as it is from the right) or *no sharp corners*.
+
+--
+
+For nearly all political science applications, these are fine assumptions. But it is important to state them explicitly and be aware that they’re there.
+
+---
+
+## Straightforward Derivatives
+
+Fortunately (for humans), it is not necessary to take limits with `\(\epsilon\)`'s to find derivatives every time. A few rules generate the derivatives of most functions.
+
+--
+The first rule is the *power rule*.
+
+--
+If `\(f(x) = cx^n\)`, then its derivative is `\(f'(x) = ncx^{n-1}\)`.
+
+--
+
+The simplest example of this is consider the line, `\(f(x) = 3x\)`. What's its derivative? 
+--
+  It is `\(3\)` but why?
+--
+
+`\begin{align}
+f'(x) &amp;= (3x)' \\
+      &amp;= (3x^1)' \\
+      &amp;= 1 \times 3x^{1-1} \\
+      &amp;= 3x^0 = 3
+\end{align}`
+
+--
+
+A special case of the power rule is that the *derivative of a constant is zero*.
+
+---
+## Straightforward Derivatives
+
+Let `\(f(x) = 3x^2\)`, then:
+
+--
+`\begin{align}
+f'(x) &amp;= (2) 3x^{2-1} \\
+      &amp;= 6x \\
+\end{align}`
+
+--
+Let `\(g(x) = x^5\)`, then:
+
+--
+`\begin{align}
+g'(x) &amp;= (5)x^{5-1} \\
+      &amp;= 5x^4 \\
+\end{align}`
+
+--
+Let `\(h(x) = 7x^{\frac{1}{2}}\)`, then:
+
+--
+`\begin{align}
+h'(x) &amp;=\left(\frac{1}{2}\right)7x^{\frac{1}{2}-1} \\
+      &amp;= \frac{7}{2}x^{-\frac{1}{2}} \\
+\end{align}`
+
+---
+## Straightforward Derivatives
+
+Find the following derivatives, and calculate the instantaneous slope of the curves at the point `\(x = 2\)`:
+
+`\(f(x) = \frac{1}{4}x^4\)`
+
+`\(g(x) = \frac{2}{x^3}\)`  [Hint: What other ways can you express fractions?]
+
+`\(h(x) = 4x^{\frac{5}{2}}\)`
+
+`\(j(x) = \sqrt[\leftroot{-2}\uproot{2}3]{x}\)` [Hint: What other ways can you express roots?]
+
+---
+## Derivative of a Sum (or Difference)
+
+The derivative of a sum (difference) is the sum (difference) of the derivatives.
+
+--
+`\begin{align}
+(f(x) +g(x))' = f'(x)+g'(x)
+\end{align}`
+
+--
+For example, let's consider `\(f(x) = 4x^2\)` and `\(g(x) =5x^3\)`
+
+--
+`\begin{align}
+f'(x)+g'(x) &amp;= (4x^2)' + (5x^3)' \\
+&amp;= (4)2x^{2-1} + (3)5x^{3-1}\\
+&amp;= 8x +15x^2
+\end{align}`
+
+--
+
+Let `\(f(x) = x\)` and `\(g(x) =x^2\)`
+
+--
+
+`\begin{align}
+f'(x)-g'(x) &amp;= (x)' - (x^2)' \\
+&amp;= (1)x^{1-1} - (2)x^{2-1}\\
+&amp;= 1-2x
+\end{align}`
+
+---
+## Derivative of a Sum (or Difference)
+
+Find the derivative of `\(h(x) = 5x^5-10x^3+6x^2-3\)` and the rate of change when `\(x=1\)`.
+
+--
+
+`\begin{align}
+h'(x) &amp;= (5x^5-10x^3+6x^2-3)' \\
+      &amp;= (5x^5)'-(10x^3)'+(6x^2)'-(3)' \\
+      &amp;= 5 \times 5x^{5-1} - 3 \times 10x^{3-1}+2\times 6x^{2-1} - 0 \\
+      &amp;= 25x^4 - 30x^2+12x
+\end{align}`
+
+--
+
+What is the rate of change when `\(x\)` is equal to one?
+
+--
+
+`\begin{align}
+h'(1) &amp;=  25x^4 - 30x^2+12x \\
+h'(1) &amp;=  25(1)^4 - 30(1)^2+12(1) \\
+h'(1) &amp;= 7
+\end{align}`
+---
+
+## Derivative of a Product
+
+The derivative of a product two functions (let's say `\(f(x)\)` and `\(g(x)\)`) is:
+
+--
+
+`\begin{align}
+(f(x) \times g(x))'= f'(x) \times g(x) + f(x) \times g'(x)
+\end{align}`
+
+--
+
+or the derivative of the first function *times* second function *plus* the first function *times* the derivative of second function.
+
+--
+
+This is referred to as **the product rule**.
+
+---
+
+## Derivative of a Product (cont'd)
+
+As an example consider `\(f(x) =x^2 +1\)` and `\(g(x) = x^3-4x\)`
+
+--
+
+
+`\begin{align}
+(f(x) \times g(x))' &amp;= ((x^2 +1)(x^3-4x))' \\
+&amp;= (x^2 +1)'(x^3-4x)+ (x^2 +1)(x^3-4x)' \\
+&amp;= (2x)(x^3-4x)+ (x^2 +1)(3x^2-4) \\
+&amp;= 2x^4-8x^2+3x^4-4x^2+3x^2-4 \\
+&amp;= 5x^4-9x^2-4
+\end{align}`
+
+--
+
+This is easy to check by multiplying out the polynomial: `\((x^2 +1)(x^3-4x) = x^5-3x^3-4x\)`. Therefore, the derivative is:
+
+--
+`\begin{align}
+(x^5-3x^3-4x)' = 5x^4-9x^2-4
+\end{align}`
+
+---
+
+## Derivative of a Quotient
+
+The derivative of a quotient two functions (let's say `\(f(x)\)` and `\(g(x)\)`) is:
+
+--
+`\begin{align}
+\left(\frac{f(x)}{g(x)}\right)'= \frac{f'(x) \times g(x)-f(x) \times g'(x)}{g(x)^2}
+\end{align}`
+
+--
+
+or the bottom *times* the derivative of the top *minus* the top *times* the derivative of the bottom, all *divided* by the bottom *squared*.
+
+--
+
+This is referred to as **the quotient rule**.
+
+--
+
+We can also use the product rule to find the quotient rule. `\(\left(\frac{f(x)}{g(x)} = f(x)g(x)^{-1}\right)\)`
+
+---
+
+## Derivative of a Quotient (cont'd)
+
+Let `\(f(x) =x^2 +1\)` and `\(g(x) = x^3-4x\)`, what is `\(\left(\frac{f(x)}{g(x)}\right)'\)`?
+
+--
+
+
+`\begin{align}
+\left(\frac{f(x)}{g(x)}\right)' &amp;= \left(\frac{x^2 +1}{x^3-4x}\right)' \\
+&amp;= \frac{(x^2 +1)'(x^3-4x)-(x^2 +1)(x^3-4x)'}{(x^3-4x)^2} \\
+&amp;=  \frac{(2x)(3x^2-4)-(x^2 +1)(3x^2-4)}{(x^3-4x)^2} \\
+&amp;= \frac{6x^3-8x-(3x^4-4x^2+3x^2-4)}{(x^3-4x)^2}  \\
+&amp;= \frac{-3x^4+6x^3+x^2-8x+4}{(x^3-4x)^2}
+\end{align}`
+
+---
+## Derivative of Products and Quotients
+
+Find the derivative of the following expressions:
+
+`\((3x^2-4x+2)(x^3-x^2+x-1)\)`
+
+`\(\frac{4x+1}{3x^2-2}\)`
+
+---
+## Derivative of Nested Functions
+
+The derivative of one function nested inside another is: (let's say `\(h(x) = f(g(x))\)`  is:
+
+--
+`\begin{align}
+(f(g(x)))'= f'(g(x)) \times g'(x)
+\end{align}`
+
+--
+
+or the derivative of the outside with respect to the inside *times* the derivative of the inside function.
+--
+
+This is referred to as **the chain rule**.
+
+--
+
+This looks messy, but is actually fairly straightforward and extremely useful as a way to find derivatives of complex functions by treating them as nested chains of functions.
+
+
+---
+
+## Derivative of Nested Functions (cont'd)
+
+Let `\(h(x) = 6(3x^2 + 2)^4\)`. Observe that this can be thought of as two nested functions, such that `\(g(x) = 3x^2 + 2\)` and `\(f(x) = 6x^4\)`, and `\(h(x) = f(g(x))\)`:
+
+--
+
+`\begin{align}
+h(x)' = (f(g(x)))' &amp;= (6(3x^2 + 2)^4)' \\
+&amp;= (4)6(3x^2 + 2)^{4-1}(3x^2 + 2)' \\
+&amp;= 24(x^2-5x+20)^{3}(6x) \\
+&amp;= 144x(x^2-5x+20)^{3} \\
+\end{align}`
+
+---
+
+## Derivative of Nested Functions (cont'd)
+
+Let `\(k(x) = 3(6x^4)^2 + 2\)`. Observe that this can be thought of the same two functions nested in the reverse order, such that `\(k(x) = g(f(x))\)`:
+
+--
+
+`\begin{align}
+k(x)' = (g(f(x)))' &amp;= (3(6x^4)^2 + 2)' \\
+&amp;= (3(6x^4)^2)' + (2)' \\
+&amp;= (2) 3(6x^4)^{2-1}(6x^4)' + 0 \\
+&amp;=(2) 3(6x^4)^{2-1}(24x^{4-1}) \\
+&amp;=(2) 3(6x^4)(24x^{3}) \\
+&amp;= 864x^7
+\end{align}`
+
+---
+
+## Derivative of Nested Functions (cont'd)
+
+Express the functions below as the nested result of two simpler functions, and use the chain rule to find the derivative:
+
+`\((3x-1)^4\)`
+
+`\(2(x^4+x^3)+7\)`
+
+---
+## Derivatives of Logarithms
+
+The derivative for any logarithm base `\(b\)` is 
+
+--
+
+`\begin{align}
+(\log_b(x))' = \frac{1}{ln(b)x}
+\end{align}`
+
+--
+
+It is important to note that a very special case of this is the derivative of a natural logarithm (or log base `\(e\)`), which is
+
+--
+
+`\begin{align}
+(log_e(x))' = (ln(x))' &amp;= \frac{1}{ln(e)x} \\
+&amp;= \frac{1}{x}
+\end{align}`
+
+---
+
+## Derivatives of Logarithms (cont'd)
+
+Let `\(f(x) = log_{10}(x)\)`,
+
+--
+
+`\begin{align}
+f'(x) = (log_{10}(x))' = \frac{1}{ln(10)x}
+\end{align}`
+
+--
+
+Let `\(g(x) = ln(3x^2+4)\)` (using the Chain Rule):
+
+--
+
+`\begin{align}
+g'(x) = (ln(3x^2+4))' &amp;= \frac{1}{3x^2+4}\times(3x^2+4)' \\
+&amp;= \frac{6x}{3x^2+4}
+\end{align}`
+---
+
+## Derivatives of Exponentials
+
+The derivative for any exponential base `\(b\)` is 
+
+--
+
+`\begin{align}
+(b^x)' = ln(b)b^x
+\end{align}`
+
+--
+
+It is important to note that a very special case of this is the derivative of `\(e^x\)`, which is
+
+--
+
+`\begin{align}
+(e^x)' &amp;= ln(e)e^x \\
+ &amp;= 1 \times e^x \\
+ &amp;= e^x
+\end{align}`
+
+
+---
+
+## Derivatives of Exponentials (cont'd)
+
+Let `\(f(x) = 4^x\)`, 
+
+--
+
+`\begin{align}
+f'(x) =(4^x)' = ln(4)4x
+\end{align}`
+
+--
+
+Let `\(g(x) = 2^{3x}\)`, 
+
+--
+
+`\begin{align}
+g'(x) = (2^{3x})' &amp;= ln(2)\times 2^{3x}\times(3x)' \\
+&amp;= 3ln(2)\times 2^{3x}
+\end{align}`
+
+--
+
+Let `\(h(x) = 4e^x\)`,
+
+--
+
+`\begin{align}
+h'(x) = (4e^x)' &amp;= 4e^x 
+\end{align}`
+
+---
+
+class: center, inverse, middle
+
+# End Day 3
+
+---
+## Agenda
+
+1) Second Derivatives
+
+2) Partial Derivatives
+
+3) Integrals
+
+4) Optimization
+
+---
+## Second Derivatives
+
+For some purposes, you may need to know the derivative of the derivative—how fast the rate of change is changing.
+
+--
+
+These are known as second derivatives, denoted `\(\frac{d^2[f(x)]}{dx^2}\)` or `\(f''(x)\)`.
+
+--
+
+Consider `\(f(x) = 5x^3 +8x^2 +2x+4\)`. What is its first and second derivatives?
+
+--
+
+
+`\begin{align}
+f'(x) = 15x^2 + 16x + 2
+\end{align}`
+
+--
+
+`\begin{align}
+f''(x) = 30x + 16
+\end{align}`
+
+--
+
+Higher order (third, fourth, etc) derivatives also exist, but are rarely relevant.
+
+---
+
+## Second Derivatives
+
+Find the first and second derivative of the expressions below:
+
+`\(f(x) = 16x^3 −3x^2 +6\)`
+
+`\(g(x) = x-x^2\)`
+
+`\(h(x) = 4x^{-1} + 5x^{\frac{7}{2}}\)`
+
+---
+
+
+## Multivariate Functions &amp; Partial Derivatives
+
+When a function takes multiple variables as inputs, it is only possible (and sometimes useful) to take the derivative with respect to one variable at a time, treating the others as constants.
+
+--
+
+These are known as partial derivatives, denoted `\(\partial\)`, or `\(f_x(x,y)\)` if you want the derivative of a function of `\(x\)` and `\(y\)` with respect to `\(x\)`.
+
+--
+
+Consider `\(f(x,y,z)=4x^2y^4 +2xz^3+8y^2z^4 +8x+7y+3z+2\)`:
+
+--
+
+`\begin{align}
+\frac{\partial[f(x,y,z)]}{\partial x} = f_x(x,y,z) &amp;= 8xy^4+2z^3+8 \\
+\frac{\partial[f(x,y,z)]}{\partial y} = f_y(x,y,z) &amp;= 16x^2y^3+16yz^4+7 \\
+\frac{\partial[f(x,y,z)]}{\partial z} = f_z(x,y,z) &amp;= 6xz^2+32y^2z^3+3
+\end{align}`
+
+---
+## Partial Derivatives
+
+Find the partial derivatives of the expression below with respect to each variable
+
+`\(8p^2q+4pq−7pq^2 +18\)`
+
+---
+## Partial Higher-Order Derivatives
+
+It is possible to combine second-order (and higher) derivatives with partial derivatives. For example:
+
+Consider `\(f(x, y) = 3x^3y^2\)` and let's we wanted to find `\(\frac{\partial^2}{\partial x \partial y}f(x,y)\)`:
+
+`\begin{align}
+\frac{\partial^2}{\partial x \partial y}(3x^3y^2) &amp;=\frac{\partial}{\partial y}((3)3x^{3-1}y^2) \\
+&amp;=\frac{\partial}{\partial y}(9x^2y^2) \\
+&amp;=(2)9x^2y^{2-1} \\
+&amp;=18x^2y
+\end{align}`
+
+--
+
+Pay attention to the denominator to give you guidance about what operations to perform. Here, we are taking the second derivative of the entire function, but are differentiating once with respect to `\(x\)` and once with respect to `\(y\)` overall. 
+
+If instead we were given `\(\frac{\partial^3}{\partial x^2 \partial y}\)` we would differentiate 3 times overall, twice with respect to x and once with respect to y.
+
+---
+
+## Partial Higher-Order Derivatives
+
+Consider again `\(f(x, y) = 3x^3y^2\)`. Find:
+
+- `\(\frac{\partial^3}{\partial x^2 \partial y}\)`
+- `\(\frac{\partial^3}{\partial x \partial y^2}\)`
+
+---
+
+## Integrals
+
+The integral is the **signed area** of the region between the curve and the x-axis.
+
+--
+
+Signed implies that it can be positive or negative.
+
+--
+
+Either the total area as the function extends to infinity in either direction, or the area between two points.
+
+---
+
+## Areas
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-19-1.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider the function, `\(y = 3\)`, plotted to the left. What is its area under the curve from `\(x=0.25\)` and `\(x=0.75\)`?
+]
+
+
+---
+
+## Areas
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-20-1.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider the function, `\(y = 3\)`, plotted to the left. What is its area under the curve from `\(x=0.25\)` and `\(x=0.75\)`?
+
+Given that this is a rectangle, the area between the function and the x-axis is `\(\text{area} = (0.75-0.25) \times 3 = 1.5\)`
+]
+
+
+---
+
+## Areas
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-21-1.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider a less simple function, `\(y = \frac{1}{2}x+1\)`, plotted to the left.  What is its area under the curve from `\(x=0.25\)` and `\(x=0.75\)`?
+]
+
+
+---
+
+## Areas
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-22-1.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider a less simple function, `\(y = \frac{1}{2}x+1\)`, plotted to the left.  What is its area under the curve from `\(x=0.25\)` and `\(x=0.75\)`?
+
+We can find the area between the function and the x-axis by taking advantage of the fact we can draw a triangle and rectangle and sum their areas. `\(\text{area}_{tri} = 0.0625\)` and `\(\text{area}_{rect}= 0.5625\)`. Thus, the total area is `\(0.625\)`.
+
+]
+
+---
+
+## Area
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-23-1.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider even more complicated function, `\(y = x-x^2\)`, plotted to the left.  What is its area under the curve from `\(x=0.25\)` and `\(x=0.75\)`?
+]
+
+---
+
+## Area
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-24-1.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Let's consider even more complicated function, `\(y = x-x^2\)`, plotted to the left.  What is its area under the curve from `\(x=0.25\)` and `\(x=0.75\)`?
+
+The area under curve `\(x=0.25\)` and `\(x=0.75\)` is `\(???\)` 
+]
+
+---
+## Integral as the Limit of a Sum
+
+  Imagine dividing the region into intervals and drawing a rectangle to capture the area for each interval, with height equal to the value of the function at the left (or right) of the interval, then summing the area of those rectangles.
+  
+--
+
+Let's see what happens as we add rectangles
+  
+---
+class: center,  middle
+
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-25-1.png" width="500" style="display: block; margin: auto;" /&gt;
+---
+
+class: center, middle
+
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-26-1.png" width="500" style="display: block; margin: auto;" /&gt;
+---
+
+class: center, middle
+
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-27-1.png" width="500" style="display: block; margin: auto;" /&gt;
+---
+
+## Integral as the Limit of a Sum
+
+Imagine dividing the region into intervals and drawing a rectangle to capture the area for each interval, with height equal to the value of the function at the left (or right) of the interval, then summing the area of those rectangles.
+  
+
+Approximation improves as the intervals become smaller.
+
+---
+
+## Integrals
+
+As you reduce the width of rectangles to zero, the summed areas of the rectangles converges to the area under the curve—including more and more of the area inside and less and less of the area outside.
+
+`\begin{align}
+\int_a^bf(x)dx = \displaystyle\lim_{h \to 0}\sum_{i=1}^{H}f(x_i)h_i
+\end{align}`
+
+--
+
+This is read as the ''integral of `\(f(x)\)` from `\(x=a\)` to `\(x=b\)` with respect to `\(x\)`.''
+
+--
+
+Using this approach, we can find:
+
+  - the exact value of the area between those points for any well-behaved   function
+  - a general equation for the area between any two points 
+  
+--
+
+However, it is mathematically difficult to solve these using this approach.
+---
+
+
+## Antiderivatives
+
+The antiderivative of a function `\(f(x)\)` denoted `\(F(x)\)` is the function whose derivative returns the original function. Formally, it is: 
+
+`\begin{align}
+F'(x) = f(x)
+\end{align}`
+
+--
+
+Essentially, this “unwinds” the derivative operation, or applies it backwards.
+
+---
+## The Fundamental Theorem of Calculus
+
+The fundamental theorem of calculus relates the derivative and the integral.
+
+`\begin{align}
+\int_a^bf(x)dx = F(b)-F(a) =  F(x)\displaystyle\rvert_a^b
+\end{align}`
+
+---
+## Indefinite Integrals
+
+We've been discussing *definite* integrals or ones that are bounded.
+
+--
+
+You can also have *indefinite* integrals or ones that do not have specific bounds, or 
+
+
+`\begin{align}
+\int f(x)dx = F(x) + C
+\end{align}`
+
+--
+
+This expression uses exactly the same antiderivative as the definite integral but there is no subtraction and there’s an arbitrary constant `\(C\)` added (since that’d disappear when taking the derivative).
+
+---
+
+## Straightforward Integrals
+
+There is an analogous concept of *power rule* for antiderivatives (when `\(n \neq -1\)`).
+
+--
+If `\(f(x) = ax^n\)`, then its antiderivative is `$$\int f(x)dx = F(x) + C = \frac{a}{n+1}x^{n+1}+C$$`
+
+--
+
+Some other useful antiderivatives are:
+
+--
+
+`\begin{align}
+\int adx = ax + C
+\end{align}`
+
+--
+
+`\begin{align}
+\int \frac{1}{x}dx = \int x^{-1}dx = ln(x) + C
+\end{align}`
+
+--
+
+`\begin{align}
+\int e^xdx = e^x + C
+\end{align}`
+
+---
+## Straightforward Integrals (cont'd)
+
+Moreover, when dealing with addition and subtraction, we can separate integrals:
+
+--
+
+`\begin{align}
+\int f(x) + g(x)dx = \int f(x)dx + \int g(x)dx = F(x)+G(x)+C 
+\end{align}`
+
+--
+
+We can also pull out constants before integrating:
+
+--
+
+`\begin{align}
+\int af(x)dx = a\int f(x)dx = aF(x) + C
+\end{align}`
+
+---
+
+## Straightforward Integrals (cont'd)
+
+Consider the example `\(f(x) = x - x^2\)`. The indefinite integral is
+
+--
+
+`\begin{align}
+\int  x - x^2dx &amp;= \int xdx-\int x^2dx  \\
+&amp;= \frac{1}{1+1}x^{1+1}-\left(\frac{1}{2+1}x^{2+1}\right) + C\\
+&amp;= \frac{1}{2}x^{2}-\frac{1}{3}x^{3} + C
+\end{align}`
+
+--
+
+Now consider the area of the curve specifically between `\(.25\)` and `\(.75\)`
+
+--
+
+`\begin{align}
+\int_.2^.75  x - x^2dx &amp;= \frac{1}{2}x^{2}-\frac{1}{3}x^{3}\displaystyle\rvert_.25^.75  \\
+&amp;= \left(\frac{1}{2}(.75)^{2}-\frac{1}{3}(.75)^{3}\right) - \left(\frac{1}{2}(.25)^{2}-\frac{1}{3}(.25)^{3}\right) \\
+&amp; = \frac{11}{96}
+\end{align}`
+---
+
+## Straightforward Integrals (cont'd)
+
+Consider the example `\(f(x) = 9x^2+10x+4\)`. The indefinite integral is
+
+--
+
+`\begin{align}
+\int  9x^2+10x+4dx &amp;= 9\int x^2dx+10\int xdx  + \int 4dx \\
+&amp;= 9\left(\frac{1}{3}\right)x^{3}+10\left(\frac{1}{2}\right)x^{2}+ 4x +C\\
+&amp;=  3x^3 +5x^2 +4x+C
+\end{align}`
+
+--
+
+Now consider the area of the curve specifically between 2 and 5:
+
+--
+
+`\begin{align}
+\int_2^5  9x^2+10x+4dx    &amp;= 3x^3 +5x^2 +4x\displaystyle\rvert_2^5  \\
+&amp;= (3(5)^3 +5(5)^2 +4(5))-(3(2)^3 +5(2)^2 +4(2))\\
+&amp; = 468
+\end{align}`
+
+---
+
+## Straightforward Integrals (cont'd)
+
+Find the indefinite integral of the function below, and calculate the area under the curve between 0 and 1:
+
+`\(\int (2x^3-3x^2+7x+4)dx\)`
+
+---
+
+## Advanced Integrals
+
+There are a number of techniques for computing the integrals of more complicated functions.
+
+  - Integration by Substitution
+  - Integration by Parts
+  
+These are beyond the scope of what we have time to cover here and, for the most part, beyond the scope of what you will need to do by hand in political science.
+
+---
+## Optimization (Maximization or Minimization)
+
+Often times we want to find the maximum or minimum of a function. For example:
+
+--
+  -  Some times we will want to maximize a function that shows the utility some political actor would get out of choosing some policy (inputs) in terms of their chances of reelection.
+  -  Other times we will want to minimize a function that calculates the bias in the estimate of a quantity of interest.
+
+--
+
+What does this look like in practical terms?
+
+---
+
+## Optimization (cont'd)
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-28-1.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+Suppose we want to find all the maxima and minima for  the function, `\(f(x) = 2x^3 - 33x^2 + 168x\)` when `\(x \in [0,10]\)`.
+
+]
+---
+
+## Optimization (cont'd)
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-29-1.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+Suppose we want to find all the maxima and minima for  the function, `\(f(x) = 2x^3 - 33x^2 + 168x\)` when `\(x \in [0,10]\)`.
+
+The *absolute maximum* occurs at `\(x = 10\)`, and the *absolute minimum* occurs at `\(x = 0\)` or the endpoints but there also appear to be a local maximum and a local minimum in between them.
+
+]
+
+---
+
+## Optimization (cont'd)
+
+.pull-left[
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-30-1.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+Let's consider the function, `\(f(x) = 2x^3 - 33x^2 + 168x\)` where `\(x \in [0,10]\)`.
+
+The *absolute maximum* occurs at `\(x = 10\)`, and the *absolute minimum* occurs at `\(x = 0\)` or the endpoints but there also appear to be a local maximum and a local minimum in between them.
+
+To determine the precise location of these local maxima and minima, note that at these points, the slope of the line is flat. This means the derivative, which captures the slope of the tangent line is `\(0\)`.
+
+]
+
+---
+## Optimization (cont'd)
+
+Armed with this insight,  we need to find `\(f'(x)\)` and set it equal to zero or:
+
+--
+
+`\begin{align}
+0 = f'(x) = (2x^3 - 33x^2 + 168x)' =  6x^2 −66x+168
+\end{align}`
+
+--
+
+We can simply and solve this equation:
+
+--
+
+`\begin{align}
+0 &amp;= 6x^2 - 66^x+168 \\
+0 &amp;= x^2 - 11x + 28
+\end{align}`
+
+--
+
+We have two strategies from Lesson 1 to solve this equation: *factoring* or using the *quadratic formula*. Both strategies will yield the same results!
+
+--
+
+We'll use the quadratic formula, which yields
+
+--
+
+`\begin{align}
+x &amp;= \frac{11 \pm \sqrt{(-11)^2-4(1)(28)}}{2(1)} \\
+x &amp;= \frac{11 \pm 3}{2} \\
+x &amp;= 4 \text{ or } 7
+\end{align}`
+
+---
+class: center, middle
+&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/3-calculus/lecture-3-calculus_files/figure-html/unnamed-chunk-31-1.png" width="600" style="display: block; margin: auto;" /&gt;
+---
+## Optimization (cont'd)
+
+If the function is relatively simple to understand or graph, it may be possible to know whether you’re dealing with a maximum or a minimum.
+
+--
+
+However, it may be necessary to check by taking the second derivative and evaluating it at the point where the first derivative equals `\(0\)`, which we'll call `\(x^*\)`:
+
+--
+
+  - Negative `\((f''(x^*) &lt; 0)\)`: local maximum 
+  - Positive `\((f''(x^*) &gt; 0)\)`: local minimum 
+  - Zero `\((f''(x^*) = 0)\)`: saddle point, or neither a minimum or a maximum
+
+--
+
+Returning to our previous example, 
+
+`\begin{align}
+f'(x) &amp;= 6x^2 - 66x+168 \\
+f''(x) &amp;= 12x-66
+\end{align}`
+
+--
+
+when we evaluate the second derivatives at the local minimum and maximum, the results are `\(f''(4) = -18\)` and `\(f''(7) = 18\)`. 
+
+---
+## Optimization (cont'd)
+
+Find the local minimum and local maximum of the function below, and check mathematically which is the minimum and which is the maximum:
+
+`\(x^3−x^2+1\)`
+
+---
+
+class: center, inverse, middle
+
+# End Day 4
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

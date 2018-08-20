@@ -1,0 +1,1057 @@
+---
+title: "Math Camp Lesson 2"
+subtitle: "Vectors and Matrices (Linear Algebra)"
+author: "UW--Madison Political Science"
+date: "August 21, 2018"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"
+    # mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_SVG"
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      # highlightStyle: solarized-dark
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+class: center, middle, inverse
+
+# Introductions
+
+<!-- include setup -->
+
+```{r xaringan-themer, include = FALSE}
+library("here")
+source(here("R/setup-lectures.R"))
+```
+
+---
+
+
+class: center, middle, inverse
+
+# Linear Algebra
+
+---
+
+## Review/Overview
+
+Algebra manipulates objects using operations
+
+--
+
+Apply operations to equations to determine what value(s) a variable (parameter) must take on to make a mathematical expression true (that is, to make the expression hold with equality or inequality)
+
+--
+
+"Solving for unknown values"
+
+--
+
+Algebra is a fundamental basis for more advanced mathematical manipulation:
+
+  - Use to derive statistical estimators, and to understand their properties and the assumptions necessary to apply them.
+  - Use to evaluate the optimal choices of strategic actors. 
+
+---
+
+## Summations
+
+The *summation* operator (denoted with a capital sigma $\Sigma$) adds up the results of the function inside it for all numbers indexed within the range indicated.
+
+--
+
+\begin{align}
+\sum_{i=1}^n = x_1 + x_2 + \dots + x_{n-1}+ x_{n}
+\end{align}
+
+--
+
+If no range is indicated $\left(\sum x_i\right)$, this implies all observations are included.
+
+---
+
+## Summations (cont'd)
+
+Suppose we have data: $x_1 = 3$, $x_2 = 4$, $x_3 = 1$, $x_4 = 0$, and $x_5 = 2$
+
+--
+
+\begin{align}
+\sum_{i=1}^5 x_i&= x_1 + x_2 + x_3 + x_4 +x_5 \\
+&= 3+4+1+0+2 \\
+&= 10
+\end{align}
+
+--
+
+\begin{align}
+\sum_{i=1}^3 (x_i^2+3)&= (x_1^2+3) + (x_2^2+3) + (x_3^2+3)\\
+&= (3^2+3) + (4^2+3) +(1^2+3) \\
+&= 35
+\end{align}
+
+---
+
+## Products
+
+
+The product operator (denoted with a capital pi $\prod$) multiplies the results of the function inside it for all numbers indexed within the range indicated.
+
+--
+
+
+\begin{align}
+\prod_{i=1}^n = x_1 \times x_2 + \dots \times x_{n-1} \times x_{n}
+\end{align}
+
+--
+
+If no range is indicated $\left(\prod x_i\right)$, this implies all observations are included.
+
+---
+## Products (cont'd)
+
+Consider again the data: $x_1 = 3$, $x_2 = 4$, $x_3 = 1$, $x_4 = 0$, and $x_5 = 2$
+
+--
+
+\begin{align}
+\prod_{i=1}^5 x_i&= x_1 \times x_2 \times x_3 \times x_4 \times x_5 \\
+&= 3\times 4\times 1\times 0\times 2 \\
+&= 0
+\end{align}
+
+--
+
+\begin{align}
+\prod_{i=1}^3 (x_i^2+3)&= (x_1^2+3) \times (x_2^2+3) \times (x_3^2+3)\\
+&= (3^2+3) \times (4^2+3) \times(1^2+3) \\
+&= 912
+\end{align}
+
+---
+## Summations and Products
+
+Given these data: $x_1 = 3$, $x_2 = 4$, $x_3 = 1$, and $x_4 = 0$; and $y_1 = 1$, $y_2 = 2$, $y_3 = 3$, and $y_4 = 4$. Find these quantities:
+
+- $\sum x_i + \sum y_i$
+- $\sum( x_i + y_i)$
+- $\prod x_i + \prod y_i$
+- $\prod( x_i \times y_i)$
+
+---
+
+## Scalars and Vectors
+
+--
+
+A single value is a called a *scalar*. For example: if $x = 4$.
+
+--
+
+A *ordered* series of values is a *vector*, usually written in bold.
+--
+ Each value is referred to as an *element*.
+ 
+--
+ When referring to elements of a vector, we will not bold the vector and add a subscript to denote their position.
+--
+
+You can have **row** vectors like
+
+$$\mathbf{v} = [v_1,v_2,v_3,v_4]$$
+--
+
+or a **column** vectors like
+
+\begin{align}
+\mathbf{v} &= {\begin{bmatrix}
+v_1 \\
+v_2 \\ 
+v_3 \\
+v_4
+\end{bmatrix}}
+\end{align}
+--
+
+Ordered simply means that $[v_1,v_2,v_3,v_4] \neq [v_4,v_3,v_2,v_1]$
+
+---
+
+## Vectors in Space
+
+.pull-left[
+```{r, echo=FALSE, cache = TRUE}
+d=data.frame(x=c(0,0,0),
+             y=c(0,0,0),
+             vx=c(2,3,-1),
+             vy=c(3,-1,1))
+
+ggplot() + 
+geom_segment(data=d, mapping=aes(x=x, y=y, xend=x+vx, yend=y+vy), arrow=arrow(), size=1, color="black") + 
+geom_point(data=d, mapping=aes(x=x, y=y), size=4, shape=21, fill="white")+
+geom_vline(xintercept = 0) +
+geom_hline(yintercept = 0)  +
+annotate("text", x = 2, y = 2.7, label = "p",
+         size = 7) +
+annotate("text", x = 3, y = -1.3, label = "q",
+         size = 7) +
+annotate("text", x = -1, y = .7, label = "r",
+         size = 7) 
+```
+]
+
+.pull-right[
+Vectors can be thought of as lines from the origin in k-dimensional space (where k is the number of vector elements) going to a point with the coordinates of the elements of the vector.
+
+$\mathbf{p} = [2,5]$
+
+$\mathbf{q} =   [4, −1]$
+
+$\mathbf{r} = [−1, 1]$
+]
+
+---
+
+## Vector Operations: Addition and Subtraction
+
+--
+We can perform arithmetic operations *similarly but not exactly the same as* scalar arithmetic. Let's say we have two vectors $\mathbf{u} = [1,2,3,4]$ and $\mathbf{v} =[4,8,12,16]$.
+--
+
+
+**So long as the vectors are conformable**, or the first vector is the same size as the second vector, 
+
+--
+addition and subtraction are straightforward. You simply add (or subtract) the corresponding elements. For example,
+
+--
+
+\begin{align}
+\mathbf{u}+\mathbf{v} &= \mathbf{w} \\
+[1,2,3,4]+[4,8,12,16] &= \mathbf{w} \\
+[1+4,2+8,3+12,4+16] &= \mathbf{w} \\
+[5,10,15,20]&= \mathbf{w}
+\end{align}
+
+--
+
+\begin{align}
+\mathbf{u}-\mathbf{v} &= \mathbf{w} \\
+[1,2,3,4]-[4,8,12,16] &= \mathbf{w} \\
+[1-4,2-8,3-12,4-16] &= \mathbf{w} \\
+[-3,-6,-9,-12]&= \mathbf{w}
+\end{align}
+
+---
+
+## Vector Operations: Scalar Multiplication
+
+
+To multiply (or divide) a vector by a scalar, simply multiply (or divide) each element of the vector by the scalar.
+
+--
+\begin{align}
+3\mathbf{u} &= \mathbf{w} \\
+3\times[1,2,3,4] &= \mathbf{w} \\
+[3,6,9,12] &= \mathbf{w} \\
+\end{align}
+
+--
+\begin{align}
+\frac{1}{2}\mathbf{v} &= \mathbf{w} \\
+\frac{1}{2}\times[4,8,12,16] &= \mathbf{w} \\
+[2,4,6,8] &= \mathbf{w} \\
+\end{align}
+--
+
+It is important to note that conformability does not matter for scalar multiplication and division. 
+
+---
+
+## Vector ''Multiplication'': Dot Product
+
+--
+
+Multiplication of vectors is not quite so straightforward, and there are actually different forms of multiplication to make matters even more confusing.
+
+--
+
+The most important form is the *inner product* or *dot product*.  The inner product of two **conformable** vectors is the sum of the element-by-element products
+
+--
+
+We can formally express this in terms of summations. Let's imagine that we have two $k$-length vectors, $\textbf{x}$ and $\textbf{y}$ and we want to find the dot product.
+
+--
+\begin{align}
+\textbf{x} \cdot \textbf{y} = [x_1 \times y_1+ x_2 \times y_2, \dots +  x_{k-1} \times y_{k-1}+ x_k \times y_k] = \sum_{i=1}^k x_iy_i \\
+\end{align}
+
+--
+
+The dot product will start with two vectors *and* result in a scalar.
+
+---
+## Vector ''Multiplication'': Dot Product
+
+Let's return to our previous examples of $\mathbf{u} = [1,2,3,4]$ and $\mathbf{v} =[4,8,12,16]$.
+
+--
+\begin{align}
+\textbf{u} \cdot \textbf{v} \\
+[1,2,3,4] \cdot [4,8,12,16] \\
+[1 \times 4+2\times 8 + 3\times 12 + 4 \times 16] \\
+120
+\end{align}
+
+--
+
+Like scalar arithmetic, there are some handy properties such as:
+
+--
+    
+Commutative property: $\textbf{u} \cdot \textbf{v} = \textbf{v} \cdot \textbf{u}$
+    
+--
+    
+Associative Property: $s(\textbf{u} \cdot \textbf{v}) = s(\textbf{u}) \cdot \textbf{v} = \textbf{u} \cdot s(\textbf{v})$ 
+  
+--
+    
+Distributive Property: $(\textbf{u} \cdot \textbf{v}) \cdot \textbf{w}=  \textbf{u} \cdot \textbf{w} + \textbf{v} \cdot \textbf{w}$  
+---
+
+## Vector Transpose 
+
+--
+The *transpose* of a vector switches it from a row vector to a column vector, or vice-versa.
+
+--
+
+The transpose is denoted with a superscript $^{T}$ or simply a prime symbol $'$. (Our personal preference is $^{T}$.)
+
+--
+
+For example, a row vector like
+
+$$\mathbf{v} = [v_1,v_2,v_3,v_4]$$
+--
+
+transpose would be the column vector:
+
+--
+ 
+\begin{align}
+\mathbf{v}^T &= {
+  \begin{bmatrix} 
+    v_1 \\ v_2 \\ v_3 \\ v_4 
+  \end{bmatrix}}
+\end{align}
+
+---
+
+## Vectors
+
+Given vectors $\textbf{x} = [1,2,0,4]$ and $\textbf{y} = [5,3,2,3]$, find:
+
+- $\mathbf{x}^T$
+- $\mathbf{x} + \mathbf{y}$
+- $\mathbf{x} \cdot \mathbf{y}$
+
+---
+
+## Matrices 
+
+--
+
+A *matrix* is an ordered rectangular array of numbers, symbols, or expressions, arranged in rows and columns. We'll denote matrices with capitalized, boldface type. For example:
+
+--
+
+\begin{align}
+\mathbf{X} &= {\begin{bmatrix}
+x_{1,1} & x_{1,2} & x_{1,3} \\
+x_{2,1} & x_{2,2} & x_{2,3} 
+\end{bmatrix}}
+\end{align}
+
+--
+
+Here, $\textbf{X}$ is a $2 \times 3$ matrix or **two** rows by **three** columns.
+
+--
+
+Like vectors, each value is referred to as an *element*. When referring to elements of a matrix, we will not bold the vector and add a subscript to denote their position. For example, $x_{1,2}$ refers to the element in the first row, second column of $\textbf{X}$.
+
+---
+
+## Special Matrices
+
+--
+
+- The most basic special matrix is the *square* matrix. As the name implies, this is a matrix with the same number of rows and columns (e.g. $2 \times 2$, $3 \times 3$, or generically, $k \times k$).
+
+--
+
+- A very general square matrix form is the *symmetric* matrix. This is a matrix that is symmetric across the diagonal from the upper left-hand
+corner to the lower right-hand corner (also called the **main diagonal**) .
+
+\begin{align}
+\mathbf{X} &= {\begin{bmatrix}
+1 & 0 & 3 \\
+0& 2 &5\\
+3 & 5& 1 
+\end{bmatrix}}
+\end{align}
+
+--
+
+- A very important special case of symmetric square matrices is the **identity matrix**, which has only the value 1 for each diagonal element and zeros for off diagonal elements. It is denoted with $\textbf{I}$:
+
+--
+
+\begin{align}
+\mathbf{I} &= {\begin{bmatrix}
+1 & 0 & 0 \\
+0& 1 & 0\\
+0 & 0& 1 
+\end{bmatrix}}
+\end{align}
+
+
+---
+
+## Matrix Operations: Transposing
+
+--
+
+You can transpose matrices like vectors. You simply switch the columns and the rows.
+
+--
+
+\begin{align}
+{\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 
+\end{bmatrix}}^T &= {\begin{bmatrix}
+1 & 4  \\
+2 & 5  \\
+3 & 6
+\end{bmatrix}}
+\end{align}
+
+--
+
+This switches the dimensions (here, from $2 \times 3$ to $3 \times 2$).
+
+---
+
+## Matrix Operations: Matrix Addition and Substraction
+
+Matrix addition and subtraction is also straightforward but the matrices must have the same dimensions (rows and columns).
+
+--
+
+To add (or subtract) matrices, simply add (or subtract) the corresponding elements.
+
+--
+
+\begin{align}
+{\begin{bmatrix}
+a_{1,1} & a_{1,2}  \\
+a_{2,1} & a_{2,2}
+\end{bmatrix}} +
+{\begin{bmatrix}
+b_{1,1} & b_{1,2}  \\
+b_{2,1} & b_{2,2}
+\end{bmatrix}} &=
+{\begin{bmatrix}
+c_{1,1} & c_{1,2}  \\
+c_{2,1} & c_{2,2}
+\end{bmatrix}} 
+\end{align}
+--
+
+
+Such that, e.g. $a_{2,1} + b_{2,1} = c_{2,1}$
+
+
+---
+## Matrix Operations: Matrix Addition and Substraction
+
+Consider:
+
+\begin{align}
+{\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 
+\end{bmatrix}} +
+{\begin{bmatrix}
+2 & 4 & 6 \\
+8 & 10 & 12 
+\end{bmatrix}} &=
+{\begin{bmatrix}
+1+2 & 2+4 & 3+6 \\
+4+8 & 5+10 & 6+12 
+\end{bmatrix}} \\
+&= {\begin{bmatrix}
+3 & 6 & 9 \\
+12 & 15 & 18
+\end{bmatrix}}
+\end{align}
+
+--
+
+or
+
+\begin{align}
+{\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 
+\end{bmatrix}} -
+{\begin{bmatrix}
+2 & 4 & 6 \\
+8 & 10 & 12 
+\end{bmatrix}} &=
+{\begin{bmatrix}
+1-2 & 2-4 & 3-6 \\
+4-8 & 5-10 & 6-12 
+\end{bmatrix}} \\
+&= {\begin{bmatrix}
+-1 & -2 & -3 \\
+-4 & -5 & -6
+\end{bmatrix}}
+\end{align}
+---
+
+## Matrix Operations: Scalar Mulitiplication and Division
+
+
+To multiply (or divide) a matrix by a scalar, simply multiply (or divide) each element of the matrix by the scalar.
+
+--
+
+For example, 
+
+--
+
+\begin{align}
+4 \times {\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 
+\end{bmatrix}}  &=
+{\begin{bmatrix}
+4 \times 1 & 4 \times 2 & 4 \times 3 \\
+4 \times 4 & 4 \times 5 & 4 \times 6 
+\end{bmatrix}} \\
+&= {\begin{bmatrix}
+4 & 8 & 12 \\
+16 & 20 & 24
+\end{bmatrix}}
+\end{align}
+
+---
+
+## Matrix Multiplication 
+
+To multiply a matrix by another matrix, each element of the result is found by taking the corresponding row of the first matrix, turning it sideways, multiplying each element by the corresponding column in the second matrix, and summing the result, or the *dot product*!
+
+--
+
+\begin{align}
+{\begin{bmatrix}
+a_{1,1} & a_{1,2}   & a_{1,3}\\
+a_{2,1} & a_{2,2}  & a_{2,3}
+\end{bmatrix}} \times
+{\begin{bmatrix}
+b_{1,1} & b_{1,2}  \\
+b_{2,1} & b_{2,2} \\
+b_{3,1} & b_{3,2}
+\end{bmatrix}} &=
+{\begin{bmatrix}
+c_{1,1} & c_{1,2}  \\
+c_{2,1} & c_{2,2}
+\end{bmatrix}} 
+\end{align}
+
+--
+
+Such that, e.g. $c_{1,1} = a_{1,1}b_{1,1} + a_{1,2}b_{2,1} +  a_{1,3}b_{3,1}$
+
+Let's do one more example to clarify. The product of a $1 \times 2$ matrix and a $2 \times 1$ matrix is a $1 \times 1$ matrix, or a scalar!
+
+--
+
+\begin{align}
+ {\begin{bmatrix}
+a & b 
+\end{bmatrix}}{\begin{bmatrix}
+c  \\
+d 
+\end{bmatrix}} =
+ac + bd
+\end{align}
+---
+
+## Matrix Multiplication
+
+Let's consider the example:
+
+--
+
+\begin{align}
+ {\begin{bmatrix}
+1 & 2  \\
+3 & 4 
+\end{bmatrix}}{\begin{bmatrix}
+ 5 & 6  \\
+7 & 8  
+\end{bmatrix}} =
+{\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}}
+\end{align}
+--
+
+  What does $a$ equal? Well, $a$ is in the first row and the first column.
+  
+--
+  
+Therefore, to find $a$ we take the dot product of the first row of the left matrix and the first column of the right matrix.
+  
+--
+
+\begin{align}
+a &= 1\times 5 + 2 \times 7 = 19
+\end{align}
+
+--
+What about $b$?
+--
+  Same principle as $a$. We take the dot product of the first row of the left matrix and the second column of the right matrix.
+  
+--
+
+\begin{align}
+b &= 1\times 6 + 2 \times 8 = 22
+\end{align}
+
+--
+
+What do $c$ and $d$ equal?
+--
+
+
+
+\begin{align}
+c &= 3\times 5 + 4 \times 7 = 43 \\
+d &= 3\times 6 + 4 \times 8 = 50
+\end{align}
+
+---
+## Matrix Multiplication
+
+Therefore,
+
+\begin{align}
+ {\begin{bmatrix}
+1 & 2  \\
+3 & 4 
+\end{bmatrix}}{\begin{bmatrix}
+ 5 & 6  \\
+7 & 8  
+\end{bmatrix}} =
+{\begin{bmatrix}
+19 & 22 \\
+43 & 50
+\end{bmatrix}}
+\end{align}
+
+---
+
+## Matrix Multiplication
+
+--
+
+To multiply matrices, they must *conform*. In this case, the *number of columns* in the first matrix **must be equal** the *number of rows* in the second matrix (the inner dimensions must be equal).
+
+--
+
+The result of matrix multiplication will have dimensions equal to the outer dimensions of the two matrices.
+
+--
+
+Unlike with scalars, order matters. Reversing the order may result in a different product, or may not even be possible depending on the dimensions of the matrices.
+
+
+---
+
+
+
+
+## Properties of Matrix Multiplication 
+
+Like vector multiplication, matrix multiplication has some special properties consider for conformable matrices.
+
+--
+    
+  -  Associative Property: $(\textbf{X}\textbf{Y})\textbf{Z} =  \textbf{X}(\textbf{Y}\textbf{Z})$
+    
+--
+    
+  -  Additive Distributive Property: $(\textbf{X}+\textbf{Y})\textbf{Z} =  \textbf{X}\textbf{Z}+\textbf{Y}\textbf{Z}$
+  
+--
+    
+  -  Identity Property: $\textbf{X}\textbf{I} = \textbf{I}\textbf{X} =  \textbf{X}$
+  
+---
+## Matrices
+
+\begin{align}
+\mathbf{A} = {\begin{bmatrix}
+4 & 1 \\
+0 & 5
+\end{bmatrix}}
+\end{align}
+
+\begin{align}
+\mathbf{B} = {\begin{bmatrix}
+3 & 2 \\
+7 & 2
+\end{bmatrix}}
+\end{align}
+
+\begin{align}
+\mathbf{C} = {\begin{bmatrix}
+0 & 2 \\
+3 & 3 \\
+1 & 5
+\end{bmatrix}}
+\end{align}
+
+\begin{align}
+\mathbf{D} = {\begin{bmatrix}
+4 & 1
+\end{bmatrix}}
+\end{align}
+
+Given the matrices above, calculate
+
+- $\mathbf{A} + \mathbf{B}$
+- $\mathbf{C}^T$
+- $\mathbf{D}\mathbf{B}$
+- $\mathbf{C}\mathbf{D}^T$
+
+---
+## Matrix Inversion 
+
+The operation most closely analogous to division for matrices is inversion. The inverse of a matrix (denoted with the superscript $^{−1}$) is the matrix that, when multiplied by the original, produces the identity matrix:
+
+\begin{align}
+\textbf{X}\textbf{X}^{-1} = \textbf{X}^{-1}\textbf{X} = \textbf{I}
+\end{align}
+
+--
+    
+Matrix inversion is only possible with **some square matrices**. If a square matrix is not invertible it is called a *singular* or *non-invertible* matrix.
+
+---
+
+## Matrix Inversion (cont'd)
+
+A handy shortcut to find the inverse of a $2 \times 2$ matrix, calculate the **determinant** (product of the main diagonal minus the product of the off diagonal) and adjust the elements as such:
+
+\begin{align}
+\textbf{X} = {\begin{bmatrix}
+a & b  \\
+c & d 
+\end{bmatrix}}
+\end{align}
+
+--
+Then, the determinant of $\textbf{X}$ is equal to $det(\textbf{X}) = ad-bc$. 
+
+--
+
+\begin{align}
+\textbf{X}^{-1} &= \frac{1}{det(\textbf{X})}{\begin{bmatrix}
+d & -b  \\
+-c & a 
+\end{bmatrix}} \\
+&= \frac{1}{(ad-bc)}{\begin{bmatrix}
+d & -b  \\
+-c & a 
+\end{bmatrix}} \\
+& = {\begin{bmatrix}
+\frac{d}{ad-bc} & -\frac{b}{ad-bc}  \\
+-\frac{c}{ad-bc} & \frac{a}{ad-bc} 
+\end{bmatrix}}
+\end{align}
+
+
+
+--
+
+If the determinant is zero, there is no inverse. Calculating inverses of larger (square) matrices is more complicated.
+
+---
+
+## Matrix Inversion
+
+Consider:
+
+\begin{align}
+\mathbf{X} 
+=
+{\begin{bmatrix}
+2 & 0  \\
+3 & 1
+\end{bmatrix}} \implies \mathbf{X}^{-1} = {\begin{bmatrix}
+\frac{1}{2} & 0  \\
+-\frac{3}{2}& 1
+\end{bmatrix}}
+\end{align}
+
+--
+Multiplying these matrices $\left(\mathbf{X}\mathbf{X}^{-1}\right)$ together yields:
+
+--
+\begin{align}
+{\begin{bmatrix}
+2 & 0  \\
+3 & 1
+\end{bmatrix}}{\begin{bmatrix}
+\frac{1}{2} & 0  \\
+-\frac{3}{2}& 1
+\end{bmatrix}} = 
+{\begin{bmatrix}
+2 \times \frac{1}{2}+ 0 \times -\frac{3}{2}& 2 \times 0 + 0 \times 1  \\
+3\times \frac{1}{2}+1 \times -\frac{3}{2}& 3 \times 0 + 1 \times 1
+\end{bmatrix}} = 
+{\begin{bmatrix}
+1 & 0  \\
+0 & 1
+\end{bmatrix}}
+\end{align}
+
+--
+
+Demonstrate that $\left(\mathbf{X}^{-1}\mathbf{X} = \mathbf{I}\right)$
+---
+
+## Solving Systems of Equations 
+
+
+Consider a system of equations:
+
+--
+\begin{align}
+2x + 6y &= 10\\
+3x +4y &= -10
+\end{align}
+
+--
+This can be represented as a product of matrices:
+
+--
+
+\begin{align}
+{\begin{bmatrix}
+2 & 6  \\
+3 & 4 
+\end{bmatrix}} {\begin{bmatrix}
+x \\
+y
+\end{bmatrix}} = {\begin{bmatrix}
+2x + 6y  \\
+3x +4y 
+\end{bmatrix}} &= 
+ {\begin{bmatrix}
+10 \\
+-10
+\end{bmatrix}}
+\end{align}
+
+--
+Let's call of these matrices and vector. 
+\begin{align}
+\textbf{A} &= {\begin{bmatrix}
+2 & 6  \\
+3 & 4 
+\end{bmatrix}} \\
+\textbf{v} &= {\begin{bmatrix}
+x \\
+y
+\end{bmatrix}} \\
+\textbf{B} &=
+ {\begin{bmatrix}
+10 \\
+-10
+\end{bmatrix}}
+\end{align}
+
+---
+
+## Solving Systems of Equations (cont'd)
+
+Now, we have expression: $\textbf{A}\textbf{v} = \textbf{B}$ and we want to solve for $\textbf{v}$.
+
+--
+
+To do so, we will use the properties of matrix multiplication and inversion.
+
+--
+
+\begin{align}
+\underset{2 \times 2}{\textbf{A}}\cdot\underset{2 \times 1}{\textbf{v}} &= \underset{2 \times 1}{\textbf{B}} \\
+\underset{2 \times 2}{\textbf{A}}^{-1}\cdot\underset{2 \times 2}{\textbf{A}}\cdot\underset{2 \times 1}{\textbf{v}} &= \underset{2 \times 2}{\textbf{A}}^{-1} \cdot \underset{2 \times 1}{\textbf{B}}\\
+\textbf{I}\textbf{v} &= \textbf{A}^{-1}\textbf{B} \\
+\underset{2 \times 1}{\textbf{v}} &= \underset{2 \times 2}{\textbf{A}}^{-1}\underset{2 \times 1}{\textbf{B}} 
+\end{align}
+
+--
+
+We know $\textbf{B}$ but we need to find $\textbf{A}^{-1}$ which given the inverse shortcut is
+
+--
+\begin{align}
+\textbf{A}^{-1} =  \frac{1}{2 \times 4 - 6 \times 3}{\begin{bmatrix}
+2 & 6  \\
+3 & 4 
+\end{bmatrix}} =
+{\begin{bmatrix}
+-\frac{2}{5} & \frac{3}{5}  \\
+\frac{3}{10} & -\frac{1}{5} 
+\end{bmatrix}}
+\end{align}
+
+---
+
+## Solving Systems of Equations (cont'd)
+
+Now we can solve for $\textbf{v}$.
+
+--
+\begin{align}
+\textbf{A}^{-1}\textbf{B} &= \textbf{v} \\
+{\begin{bmatrix}
+-\frac{2}{5} & \frac{3}{5}  \\
+\frac{3}{10} & -\frac{1}{5} 
+\end{bmatrix}} {\begin{bmatrix}
+10 \\
+-10
+\end{bmatrix}} &=  {\begin{bmatrix}
+x \\
+y
+\end{bmatrix}} \\
+{\begin{bmatrix}
+-\frac{2}{5} \times 10 + \frac{3}{5} \times -10  \\
+\frac{3}{10} \times 10  -\frac{1}{5}  \times -10
+\end{bmatrix}}  &= {\begin{bmatrix}
+x \\
+y
+\end{bmatrix}}\\
+{\begin{bmatrix}-10  \\
+5
+\end{bmatrix}}  &= {\begin{bmatrix}
+x \\
+y
+\end{bmatrix}}\\
+\end{align}
+
+--
+
+Let's verify our results
+
+\begin{align}
+2(-10) + 6(5) &= 10\\
+3(-10) +4(5) &= -10
+\end{align}
+
+
+---
+
+class: center, middle, inverse
+
+# Where is linear algebra in political science?
+
+
+
+---
+
+class: center, middle, inverse
+
+More like, where *isn't* it?
+
+
+
+---
+
+## Regression
+
+We want to estimate the linear relationship between an independent variable $\mathbf{x}$ and a dependent variable $\mathbf{y}$. How does $\mathbf{x}$ affect $\mathbf{y}$?
+
+--
+
+$$\mathbf{y} = \alpha + \beta \mathbf{x} + \mathbf{\varepsilon}$$
+
+--
+
+In matrix form:
+
+$$\begin{bmatrix} y_{1} \\ y_{2} \\ \vdots \\ y_{n} \end{bmatrix} = \alpha + \beta \begin{bmatrix} x_{1} \\ x_{2} \\ \vdots \\ x_{n} \end{bmatrix} + \begin{bmatrix} \varepsilon_{1} \\ \varepsilon_{2} \\ \vdots \\ \varepsilon_{n} \end{bmatrix}$$
+
+--
+
+or ...
+
+$$\begin{bmatrix} y_{1} \\ \vdots \\ y_{n} \end{bmatrix} = \begin{bmatrix} 1 & x_{1} \\ \vdots & \vdots \\ 1 & x_{n} \end{bmatrix} \begin{bmatrix} \alpha \\ \beta \end{bmatrix} + \begin{bmatrix} \varepsilon_{1} \\  \vdots \\ \varepsilon_{n} \end{bmatrix}$$
+
+
+
+---
+
+## Matrix-form regression
+
+Supposing that we refer to the coefficient vector $\beta = \begin{bmatrix} \alpha \\ \gamma \end{bmatrix}$
+
+--
+
+We can write the regression equation for an arbitrary number of $x$ variables as...
+
+$$\mathbf{y} = \mathbf{X}\beta + \mathbf{\varepsilon}$$
+
+--
+
+It so happens that when we do the *matrix calculus* to solve for $\beta$...
+
+$$\beta = (\mathbf{X}^{T}\mathbf{X})^{-1}\mathbf{X}^{T}\mathbf{y}$$
+
+
+---
+
+class: center, inverse
+
+## Point being...
+
+--
+
+These basic principles apply to all regression modeling
+
+--
+
+and *tons* of political science boils down to regression modeling
+
+
+
+---
+
+class: center, inverse, middle
+
+# End Day 2
