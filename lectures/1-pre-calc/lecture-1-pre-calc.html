@@ -725,8 +725,8 @@ Order of operations:
 
 - operations within parentheses
 - Exponents
-- Multiplication and division (right to left)
-- Addition and subtraction (right to left)
+- Multiplication and division (left to right)
+- Addition and subtraction (left to right)
 
 
 
@@ -811,7 +811,7 @@ A *piecewise-defined function* has different definitions for different regions o
 .pull-left[
 `$$f(x)=\left\{\begin{array}{ll} 0 &amp; \text{if } x &lt; 0 \\ x &amp; \text{if } x \in [0, 1] \\ x^{2} &amp; \text{if } x &gt; 1 \end{array}\right.$$`
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/piecewise_1-1.png" width="300" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/piecewise_1-1.png" width="300" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -820,7 +820,7 @@ A *piecewise-defined function* has different definitions for different regions o
 .pull-left[
 `$$g(x)=\left\{\begin{array}{ll} x+3 &amp; \text{if } x \in (-\infty,0)\\ 4   &amp; \text{if } x = 0  \\ x-3 &amp; \text{if } x \in (0,\infty) \end{array}\right.$$`
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/piecewise_2-1.png" width="300" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/piecewise_2-1.png" width="300" style="display: block; margin: auto;" /&gt;
 ]
 
 
@@ -857,7 +857,7 @@ class: middle, center
 
 `\(p(x) = 2x - 1\)`, on the interval `\([-2, 2]\)` 
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/fun_practice_1-1.png" width="500" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/fun_practice_1-1.png" width="500" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -868,7 +868,7 @@ class: middle, center
 
 `\(q(x) = x * -1^{x}\)`, for integers `\(\{0, 1, 2, 3, 4, 5\}\)`
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/fun_practice_2-1.png" width="500" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/fun_practice_2-1.png" width="500" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -877,7 +877,7 @@ class: center, middle
 
 `\(r(x) = 2x^{2} - 3x + 4\)`, on the interval `\((0, 4)\)`
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/fun_practice_3-1.png" width="500" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/fun_practice_3-1.png" width="500" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -900,7 +900,7 @@ A *limit* describes a function's behavior at a given input: `\(\displaystyle\lim
 ...or as the input value changes: `\(\displaystyle\lim_{x \to \infty}\left( 2 - x^{2} \right) = -\infty\)`
 
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/limit_example-1.png" width="400" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/limit_example-1.png" width="400" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -913,7 +913,7 @@ A function is *continuous* if it has no gaps or jumps.
 
 Meaning... small changes in input produce small changes in output
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/continuity-1.png" width="700" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/continuity-1.png" width="700" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -968,7 +968,7 @@ Why we care about discontinuity: *regression discontinuity*
 
 .pull-left[
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/rdd_1-1.png" width="400" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/rdd_1-1.png" width="400" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -976,7 +976,7 @@ Why we care about discontinuity: *regression discontinuity*
 
 .pull-right[
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/rdd_2-1.png" width="400" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/rdd_2-1.png" width="400" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -995,7 +995,7 @@ A function is *monotonic* if it always increases (monotonically increasing) or a
 - increasing: for any `\(x_{1} &gt; x_{2}\)`, then `\(f(x_{1}) &gt; f(x_{2})\)`
 - decreasing: for any `\(x_{1} &lt; x_{2}\)`, then `\(f(x_{1}) &lt; f(x_{2})\)`
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/monotonic-1.png" width="600" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/monotonic-1.png" width="600" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -1011,7 +1011,7 @@ Imagine you draw a line between two points along a function. A function (or segm
 
 - convex: `\(\frac{f(x_{1}) + f(x_{2})}{2} &gt; f\left( \frac{x_{1} + x_{2}}{2} \right)\)`
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/concavity-1.png" width="600" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/concavity-1.png" width="600" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -1028,7 +1028,7 @@ Formally: if `\(y = f(x)\)`, then `\(f^{-1}(y) = x\)`
 
 Also: `\(f^{-1}\left( f(x) \right) = x\)`
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/inverse-1.png" width="600" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/inverse-1.png" width="600" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -1041,7 +1041,7 @@ The *exponent* operator multiplies a number by itself the number of times indica
 
 `$$x^n = x * x * ... * x \quad (n \text{ times})$$`
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/exponents-1.png" width="1000" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/exponents-1.png" width="1000" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -1057,7 +1057,7 @@ The *exponent* operator multiplies a number by itself the number of times indica
 `$$x = \sqrt[n]{x} * \sqrt[n]{x}... \sqrt[n]{x} \quad (n \text{ times})$$`
 
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/root-1.png" width="600" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/root-1.png" width="600" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -1119,7 +1119,7 @@ Exponentials and logarithms are inverse functions. Logs "undo" exponentials, and
 
 We can see this because exponentials and logs are *reflections of each other* over `\(y = x\)` (one way to identify inverse functions)
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/explog-1.png" width="400" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/explog-1.png" width="400" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -1131,7 +1131,7 @@ Exponent: `\(x^2\)` ( `\(x\)` is the base)
 
 Exponentials: `\(2^{x}\)` ( `\(x\)` is the power)
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/exp_exp-1.png" width="700" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/exp_exp-1.png" width="700" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1143,7 +1143,7 @@ What happens when you exponentiate a parabola?
 
 --
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/exponentiated_parabola-1.png" width="600" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/exponentiated_parabola-1.png" width="600" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -1182,7 +1182,7 @@ class: center, middle
 `$$\displaystyle f(x \mid \mu, \sigma) = \frac{1}{2\pi\sigma^{2}}e^{- \frac{(x - \mu)^{2}}{2\sigma^{2}}}$$`
 
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/normal_pdf-1.png" width="500" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/normal_pdf-1.png" width="500" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -1194,7 +1194,7 @@ class: center, middle
 
 
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/log_transforms-1.png" width="700" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/log_transforms-1.png" width="700" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -1239,7 +1239,7 @@ class: center
 
 Maximizing the log likelihood
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/plot_ll-1.png" width="400" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/plot_ll-1.png" width="400" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1251,7 +1251,7 @@ Maximizing the log likelihood
 
 On the unlogged scale
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/plot_l-1.png" width="400" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/plot_l-1.png" width="400" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1381,7 +1381,7 @@ The absolute value operator returns the positive representation of a number
 `$$|x| = \left\{ \begin{array}{ll} x &amp; \text{if } x \text{ is positive} \\ -x &amp; \text{if } x  \text{ is negative} \end{array} \right.$$`
 
 
-&lt;img src="/Users/michaeldecrescenzo/Box Sync/workshops/math-camp/lectures/1-pre-calc/lecture-1-pre-calc_files/figure-html/abs-1.png" width="500" style="display: block; margin: auto;" /&gt;
+&lt;img src="lecture-1-pre-calc_files/figure-html/abs-1.png" width="500" style="display: block; margin: auto;" /&gt;
 
 
 

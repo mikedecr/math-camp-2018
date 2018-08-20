@@ -723,8 +723,8 @@ Order of operations:
 
 - operations within parentheses
 - Exponents
-- Multiplication and division (right to left)
-- Addition and subtraction (right to left)
+- Multiplication and division (left to right)
+- Addition and subtraction (left to right)
 
 
 
