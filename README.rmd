@@ -6,34 +6,41 @@ date: 2018-05-05
 
 # Math Camp 2018
 
-This repository contains materials for UW–Madison Political Science Math Camp (Fall 2018 incoming cohort). 
-
-Materials from 2017 can be found [here](https://github.com/mikedecr/math-camp-2017)
-
-
-## This curriculum is a work in progress
-
-This year's instruction is co-instructed with Micah C.R. Dillard
-
-Resources for collaboration:
-
-- [Happy Git with R](http://happygitwithr.com/)
+This repository contains materials for UW–Madison Political Science Math Camp (Fall 2018 incoming cohort). Instructors are Michael DeCrescenzo and Micah Dillard. 
 
 
 
+# For students
+
+Materials for students include lectures and practice problems. 
+
+**Slides** can be found in the `/lectures/` folder. 
+
+- The easiest way to view slides is to use the PDF files. PDFs of the slides can be found in the `/lectures/pdf/`  folder. These should open in the Preview or Adobe Reader applications, depending on your computer. 
+- For technical reasons, these slides are designed to be viewed in a web browser (like Google Chrome, Firefox, Safari, Internet Explorer, etc.). This makes the slides look a bit nicer (mainly the math). If you want to view them this way, you should download the entire course repository (either as a `.zip` archive, or by cloning the repository using `git`) and open the HTML versions of the slides in your web browser. 
+
+**Practice problems** can be found in the `/exercises/` folder. Each exercise set has a PDF file. Use these. 
 
 
-## Repo setup (for students)
+# Past materials
 
-Lectures are organized into two parts
-
-- lectures (slideshows) are `.pdf` files and can be found in the `lectures/` folder
-- R script files are `.R` files and can be found in the `R/` folder
-- Exercises are `.pdf` files and can be found in the `exercises/` folder. Solutions can further be found in `exercises/solutions/`
+Should you want to view 2017 materials, they can be found [here](https://github.com/mikedecr/math-camp-2017). 
 
 
+# Information for building
+
+Because this repository manages (at least) one large file using [`git-lfs`](https://git-lfs.github.com/), anybody wishing to build this repository from scratch will find the best luck if they `git clone` the repository rather than downloading it as a `zip`. 
+
+Problem sets may or may not be typeset using the `MinionPro` and `MyriadPro` type family packages for LaTeX. These packages are a pain in the butt to set up for PDFLaTeX, so if building these files from scratch is something you'd like to do, I would recommend using other typeface packages. I have conveniently included alternatives in each problem set's `.tex` file.
+
+
+
+
+
+<!-- 
 
 ## Technical details on repo setup
 
 - 2017 lessons are in a separate repository/directory on home machine. **Note to self:** Learn how to submodule.
 - 2017 notes contain past materials, other notes to self.
+ -->

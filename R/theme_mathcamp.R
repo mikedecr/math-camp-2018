@@ -15,13 +15,13 @@ scale_colour_discrete <- ggthemes::scale_colour_solarized
 scale_fill_discrete <- ggthemes::scale_fill_solarized
 
 
-theme_mathcamp <- function(base_size = 12, base_family = "Roboto") {
+theme_mathcamp <- function(base_size = 12, base_family = "Myriad Pro") {
 
   # --- geom defaults -----------------------
   #   FYI not all of these work (e.g. smooth---why?)
 
   update_geom_defaults("point", list(color = dgray, size = 2))
-  update_geom_defaults("text", list(color = dgray, size = 3.5, family = "Roboto"))
+  update_geom_defaults("text", list(color = dgray, size = 3.5, family = "Myriad Pro"))
   update_geom_defaults("line", list(color = dgray, size = 0.65))
   update_geom_defaults("bar", list(fill = mgray, color = dgray))
   update_geom_defaults("density", list(fill = mgray, 
@@ -70,8 +70,8 @@ theme_mathcamp <- function(base_size = 12, base_family = "Roboto") {
     axis.title.x = element_text(margin = margin(t = 8, b = 4)),
     axis.title.y = element_text(angle = 90, vjust = 1, margin = margin(r = 8)),
     axis.text = element_text(size = rel(1.2), color = dgray),
-    # axis.ticks = element_line(size = rel(1), color = lgray),
-    axis.ticks = element_blank(),
+    axis.ticks = element_line(size = rel(0.5), color = mgray),
+    # axis.ticks = element_blank(),
 
 
 # --- legend -----------------------
