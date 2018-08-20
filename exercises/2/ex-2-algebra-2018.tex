@@ -1,0 +1,268 @@
+\documentclass[11pt]{article}
+
+% font things
+\usepackage{amsmath}
+\usepackage{MnSymbol} % math things
+% serif: if MinionPro doesn't work, use mathptmx
+\usepackage[lf, mathtabular, minionint]{MinionPro} % Minion
+% \usepackage{mathptmx}   % times
+% sans font: use roboto if MyriadPro doesn't work
+% \usepackage{MyriadPro} 
+\usepackage{roboto}     % sans 
+
+
+% begin old preamble
+
+% --- character encoding ---
+% \usepackage[latin1]{inputenc}
+% \usepackage[T1]{fontenc}
+
+
+\usepackage[top=.8in, bottom=.8in, left=1in, right=1in]{geometry}
+
+% --- old font ---
+% \renewcommand{\rmdefault}{pplx}
+% \usepackage[sc]{mathpazo}
+% \usepackage[OT1, euler-hat-accent]{eulervm}
+\usepackage[usenames, dvipsnames, svgnames]{xcolor}
+\usepackage{enumitem}
+
+% --- styling ---
+\usepackage{titling}
+\usepackage[small, compact]{titlesec}
+\setitemize[0]{leftmargin=*}
+\usepackage{multicol, multirow}
+\usepackage{epsfig, subfigure, subfloat, graphicx}
+\usepackage{anysize, indentfirst, setspace}
+\usepackage{verbatim, rotating, xfrac}
+\usepackage{gensymb}
+\usepackage{caption, hanging}
+\newcommand{\mc}[1]{\multicolumn{1}{c}{#1}}
+%\parindent 0pt
+%\setdefaultenum{a.}{i.}{A}{1}
+%\setdefaultitem{}{\textperiodcentered}{}{}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage{caption, hanging}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,backgrounds}
+%\setdefaultenum{a.}{1)}{i.}{a.}
+\parindent 0pt
+
+\makeatletter
+\newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}%
+\newsavebox{\mybox}\newsavebox{\mysim}
+\newcommand{\distras}[1]{%
+  \savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
+  \savebox{\mysim}{\hbox{$\sim$}}%
+  \mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
+}
+\makeatother
+
+
+
+
+
+\title{\Large{\bf{\vspace{-100pt}Mathematics for Political Science \vspace{-15pt}}}}
+\author{\large{Day 2: Algebra}}
+\date{\vspace{-5pt}\large{Exercises \vspace{-10pt}}}
+\begin{document}
+\maketitle
+
+\hrule
+
+
+
+\begin{enumerate}
+
+\item Solve the following equations for x:
+\begin{enumerate}
+\item $12x + 2 = 18x$ %x = 1/3
+\item $-6 - 4x = -3 - 8x$  %x = 3/4
+\end{enumerate}
+
+
+\item Express $\alpha$ in terms of the other unknown variables:
+\begin{enumerate}
+\item $3\alpha - 8\theta = \alpha + 2\beta$ %alpha = beta + 4 theta
+\item $\alpha x + \alpha y = \alpha x^2 + \alpha y^2 + 4$ %alpha = 4/(x + y - x^2 - y^2)
+\end{enumerate}
+
+
+\item (Gill 1.6) Solve the following inequalities so that the variable is the only term on the left-hand side:
+\begin{enumerate}
+\item $x - 3 < 2x + 15$  %x > -18
+\item $11 - \frac{4}{3}t > 3$  % t < 6
+\item $\frac{5}{6}y + 3(y-1) \leq \frac{11}{6}(1-y) + 2y$  % y \leq 29/22
+\end{enumerate}
+
+
+\item Find the values of $x$ where $f(x)=0$ using factorization:
+\begin{enumerate}
+\item $x^2 + 5x - 14$ % x=2, x=-7 (x-2)(x+7)
+\item $x^2 - 8x + 16$ % x=4 (x-4)^2
+\item $3x^2 + 9x - 30$ % x=2, x=-5 (3x-6)(x+5)
+\end{enumerate}
+
+
+\item Solve the following equations for $x$ using the quadratic formula:
+\begin{enumerate}
+\item $18x^2 + 10x = 3 - 15x$ %x=1/9, x=-1.5
+\item $20x^2 + 2x - 3 = 5 + 20x - 15x^2$ % x= -2/7, x=4/5
+\end{enumerate}
+
+
+\item Solve the following systems of equations for $a$ and $b$ using the ``direct substitution'' approach:
+\begin{enumerate}
+\item $b + 5a = 2$ \\ $7b - 6a = 14$ %a=0, b=2
+\item $3(a+b) + 7a = 8(b-1) + 33$ \\ $-3a + 4(1-b) = 4(1-a) - 15$ %a=5, b=5
+\end{enumerate}
+
+
+
+\item Solve the following systems of equations for $c$ and $d$ using the ``elimination'' approach:
+\begin{enumerate}
+\item $3c + 4d = 13$ \\ $2c + 5d = 4$ %c=7, d=-2
+\item $c + 4d + 36 = 10d - 3c$ \\ $2(c+1) + 2(d+1) = 6$ %c=-3, d=4
+\end{enumerate}
+
+
+\item Solve this system of equations for $x$ and $y$ in terms of $\alpha$: \\
+$~~~~~~~~2x + y = 10\alpha + 5$ \\
+$~~~~~~~~3x + 3y = 18\alpha + 9$ % x=4a + 2, y=2a + 1
+
+
+\item Solve this system of equations for q, r, and s: \\
+$~~~~~~~~2q + 4r + s = 1$ \\
+$~~~~~~~~4(q+1) + 7(1-r) = 2s + 16$ \\
+$~~~~~~~~8q + 4r - 2s = 5q + 19r + 4s$ % q=1, r=-1, s=3
+
+
+\item Calculate the dot product of the vectors below.
+\begin{enumerate}
+\item $[3, 4, 1, 7, 0] \cdot [5, 2, 2, 0, 3]$ %25
+\item $[4, 1, 3] \cdot [0, 7, 5]$ %22
+\end{enumerate}
+
+
+
+\item (Gill 3.9) For the following matrix, calculate $\textbf{X}^n$ for $n = 2, 3, 4, 5$.  Write a rule for calculating higher values of $n$.
+\[
+\left[\begin{array}{ccc}
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+\end{array}\right]
+\]
+% odd powers look like this, even powers are the identity matrix
+
+
+\item Using the matrix below, show the identities of multiplication and addition for matrices:
+\[
+\left[\begin{array}{cc}
+a & b \\
+c & d \\
+\end{array}\right]
+\]
+
+
+
+\item Perform the following matrix multiplications, or explain why they are not possible:
+\begin{enumerate}
+\item $\left[\begin{array}{cccc}
+4 & 5 & 5 & 2 \\
+\end{array}\right]
+\left[\begin{array}{cc}
+1 & 3 \\
+8 & 1 \\
+0 & 9 \\
+6 & 4 \\
+\end{array}\right]$
+% [56  70]
+\item $\left[\begin{array}{ccc}
+a & b & c \\
+d & e & f \\
+g & h & i \\
+\end{array}\right]
+\left[\begin{array}{c}
+p \\
+q \\
+r \\
+\end{array}\right]$
+\item $\left[\begin{array}{ccc}
+\alpha & \beta    & \gamma \\
+\delta & \epsilon & \eta \\
+\end{array}\right]
+\left[\begin{array}{cc}
+\lambda & \sigma \\
+\end{array}\right]$
+% not possible - doesn't conform
+\end{enumerate}
+
+
+
+
+\item Multiply the matrices below to show that order matters for matrix multiplication: 
+
+\begin{tabular}{cccc}
+&
+a. $\left[\begin{array}{ccc}
+4 & 7 & 1 \\
+\end{array}\right]
+\left[\begin{array}{c}
+3 \\
+0 \\
+5 \\
+\end{array}\right]$
+&
+~~~~~~~~
+&
+$\left[\begin{array}{c}
+3 \\
+0 \\
+5 \\
+\end{array}\right]
+\left[\begin{array}{ccc}
+4 & 7 & 1 \\
+\end{array}\right]$
+\end{tabular}
+
+
+\begin{tabular}{cccc}
+&
+b. $\left[\begin{array}{cc}
+4 & 8 \\
+1 & 6 \\
+2 & 2 \\
+\end{array}\right]
+\left[\begin{array}{ccc}
+9 & 6 & 3 \\
+1 & 5 & 3 \\
+\end{array}\right]$
+&
+~~~~~~~~
+&
+$\left[\begin{array}{ccc}
+9 & 6 & 3 \\
+1 & 5 & 3 \\
+\end{array}\right]
+\left[\begin{array}{cc}
+4 & 8 \\
+1 & 6 \\
+2 & 2 \\
+\end{array}\right]$
+\end{tabular}
+
+
+
+
+\end{enumerate}
+
+
+
+\vfill
+\begin{center}
+\small{Thanks to Dave Ohls, Brad Jones, and Sarah Bouchat for past years' materials}
+\end{center}
+
+\end{document} 
