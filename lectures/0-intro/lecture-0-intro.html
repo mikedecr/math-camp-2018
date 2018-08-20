@@ -1,19 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to Math Camp (2018)</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Instructors: Michael DeCrescenzo and Micah Dillard" />
+    <meta name="date" content="2018-08-20" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Welcome to Math Camp (2018)
+## Dept. of Political Science <br> University of Wisconsin–Madison
+### Instructors:<br>Michael DeCrescenzo and Micah Dillard
+### August 20, 2018
+
 ---
-title: "Welcome to Math Camp (2018)"
-subtitle: "Dept. of Political Science <br> University of Wisconsin--Madison"
-author: "Instructors:<br>Michael DeCrescenzo and Micah Dillard"
-date: "August 20, 2018"
-output:
-  xaringan::moon_reader:
-    lib_dir: libs
-    mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"
-    css: xaringan-themer.css
-    nature:
-      highlightStyle: github
-      # highlightStyle: solarized-dark
-      highlightLines: true
-      countIncrementalSlides: false
----
+
 
 class: inverse, center, middle
 
@@ -22,7 +26,7 @@ class: inverse, center, middle
 ### (Political Science and Math)
 
 
-<!-- include setup -->
+&lt;!-- include setup --&gt;
 
 
 
@@ -69,7 +73,7 @@ Even if you don't do highly mathematical work, you will encounter it
 
 class: center
 
-# For empirical research <br> (data analysis...) 
+# For empirical research &lt;br&gt; (data analysis...) 
 
 --
 
@@ -94,7 +98,7 @@ Make causal inferences
 
 class: center
 
-# For formal models <br> (game theory...)
+# For formal models &lt;br&gt; (game theory...)
 
 --
 
@@ -152,7 +156,7 @@ You won't memorize everything we cover this week,
 
 but you need to be able to "roll with it" in class
 
-<!-- -- 1. New: *computing applications and practice* (using R)! -->
+&lt;!-- -- 1. New: *computing applications and practice* (using R)! --&gt;
 
 
 
@@ -370,7 +374,7 @@ Other resources:
 
 - View [last year's materials](https://github.com/mikedecr/math-camp-2017)
 - Gill, [*Essential Mathematics for Political and Social Research*](https://www.amazon.com/Essential-Mathematics-Political-Research-Analytical/dp/052168403X)
-- Moore & Siegal: [*A Mathematics Course for Political & Social Research*](http://people.duke.edu/~das76/MooSieBook.html)
+- Moore &amp; Siegal: [*A Mathematics Course for Political &amp; Social Research*](http://people.duke.edu/~das76/MooSieBook.html)
 
 
 
@@ -389,12 +393,12 @@ class: center, middle, inverse
 
 # Mike DeCrescenzo
 
-.pull-left[<img width = 100% src="img/mike.png">]
+.pull-left[&lt;img width = 100% src="img/mike.png"&gt;]
 
 .pull-right[
 Roots in St. Louis and Kansas City, Missouri. Short stints in Berkeley, CA
 
-Studies American politics & political methodology (since 2014)
+Studies American politics &amp; political methodology (since 2014)
 
 Primary elections, gender and voting, voter identification requirements
 
@@ -408,12 +412,12 @@ Email: [decrescenzo@wisc.edu](mailto:decrescenzo@wisc.edu)
 
 # Micah Dillard
 
-.pull-left[<img width = 100% src="img/micah.jpg">]
+.pull-left[&lt;img width = 100% src="img/micah.jpg"&gt;]
 
 .pull-right[
 A proud Ohio son (Columbus)
 
-Studies international relations & political methodology (since 2014)
+Studies international relations &amp; political methodology (since 2014)
 
 Economic sanctions, energy and foreign policy, non-traditional security
 
@@ -431,6 +435,51 @@ Email: [micah.dillard@wisc.edu](mailto:micah.dillard@wisc.edu)]
 class: center, middle, inverse
 
 # Let's get started
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
 
-
-
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

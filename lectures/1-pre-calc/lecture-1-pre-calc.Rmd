@@ -1,16 +1,15 @@
 ---
-title: "Math Camp Lesson 1"
+title: "Math Camp: Lesson 1"
 subtitle: "Basics, Notation, Pre-Calculus"
 author: "UW--Madison Political Science"
 date: "August 20, 2018"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"
+    mathjax: "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_HTMLorMML"
     css: xaringan-themer.css
     nature:
       highlightStyle: github
-      # highlightStyle: solarized-dark
       highlightLines: true
       countIncrementalSlides: false
 ---
@@ -51,7 +50,7 @@ Math is a general framework for manipulating various concepts, *one of which* is
 
 Types of numbers:
 
-- Integers (whole numbers): $\mathbb{Z}$
+- Integers (whole numbers, including negative): $\mathbb{Z}$
 - Real numbers (the continuous number line): $\mathbb{R}$
 - Positive and negative real numbers: $\mathbb{R}^{+}$ and $\mathbb{R}^{-}$
 - Real numbers in $n$ dimensions: $\mathbb{R}^{n}$
@@ -139,7 +138,7 @@ We can manipulate numbers with simple operations
 
 --
 
-- division: $7 / 8$
+- division: $7 \div 8$
 
 --
 
@@ -148,7 +147,7 @@ We can *generalize* these statements by using *variables*
 - $1 + x$
 - $3 - y$
 - $5 \times a$
-- $7 / m$
+- $7 \div m$
 
 *Variable*: a symbol to represent an entity that could take different values
 
@@ -200,7 +199,7 @@ If $a = 7x$, then $8*a$ and $8 * 7x$ are equivalent statements
 
 ## Solving equalities and inequalities
 
-Isolate an unknown term to express it in terms of known terms
+Isolate an unknown quantity to express it in terms of known quantities
 
 --
 
@@ -251,7 +250,7 @@ The information we record about what we study
 | Barriques         | Capitol       | 6      | good | bathroom key 
 | Colectivo         | State St.     | 7      | fair | spotty wifi 
 | Fair Trade        | State St.     | 8      | good | expensive, tables 
-| Michelangelo's    | Capitol       | 8      | fair | bathroom key 
+| Michelangelo's    | Capitol       | 5      | meh | bathroom key 
 | Steep & Brew      | Bascom Hill   | 1      | fair | truly the worst coffee ever 
 
 
@@ -348,7 +347,7 @@ Different types of variables lend themselves to different types of analysis
 
 --
 
-- Statistical models
+- Statistical models (You will learn if you take 812, 813, MLE, etc.)
 
 --
 
@@ -366,7 +365,7 @@ Different types of variables lend themselves to different types of analysis
 
   + **Ratio**: least-squares, count/rate models, duration/survival models
 
-You will learn all of these (if you take 812, 813, MLE, etc.)
+
 
 
 
