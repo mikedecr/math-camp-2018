@@ -250,6 +250,7 @@ For functions that are well-behaved (continuous), the limit as x approaches a fi
 
 ## Examples of Limits
 
+
 --
 
 Let's consider $\displaystyle\lim_{x \to 2} x^2-3x +1$
@@ -263,17 +264,23 @@ Let's consider $\displaystyle\lim_{x \to 2} x^2-3x +1$
 &= 1
 \end{align}
 
+
+
+
+
+
 ---
+
 ## Examples of Limits (cont'd)
 
 Now, let's consider $\displaystyle\lim_{x \to \infty} \frac{4x^4+7x^2+8}{3x^4}$
 
 --
 \begin{align}
-\displaystyle\lim_{x \to \infty} \frac{4x^4+7x^2+8}{3x^4} &= \lim_{x \to \infty} \frac{4x^4+7x^2+8}{3x^4} \\
-&= \lim_{x \to \infty}  \frac{4x^4}{3x^4} + \lim_{x \to \infty} \frac{7x^2}{3x^4}+ \lim_{x \to \infty}  \frac{8}{3x^4} \\
-&= \lim_{x \to \infty}  \frac{4}{3} + \lim_{x \to \infty} \frac{7}{3x^2}+ \lim_{x \to \infty}  \frac{8}{3x^4} \\
-&= \frac{4}{3} + 0 + 0 \\
+\displaystyle\lim_{x \to \infty} \frac{4x^4+7x^2+8}{3x^4} &= \lim_{x \to \infty} \frac{4x^4+7x^2+8}{3x^4} \\[9pt]
+&= \lim_{x \to \infty}  \frac{4x^4}{3x^4} + \lim_{x \to \infty} \frac{7x^2}{3x^4}+ \lim_{x \to \infty}  \frac{8}{3x^4} \\[9pt]
+&= \lim_{x \to \infty}  \frac{4}{3} + \lim_{x \to \infty} \frac{7}{3x^2}+ \lim_{x \to \infty}  \frac{8}{3x^4} \\[9pt]
+&= \frac{4}{3} + 0 + 0 \\[9pt]
 &= \frac{4}{3} 
 \end{align}
 
@@ -286,13 +293,11 @@ Let's consider $\displaystyle\lim_{x \to 0} \frac{4x^4+7x^2 +8}{3x^4}$
 
 --
 
-\begin{align}
-&= \lim_{x \to 0} \frac{4x^4+7x^2 +8}{3x^4} \\
-&= \frac{\displaystyle\lim_{x \to 0}  4x^4+7x^2 +8}{\displaystyle\lim_{x \to 0}  3x^4} \\
-&= \frac{4(0)^4+7(0)^2 +8}{\displaystyle\lim_{x \to 0}  3x^4} \\
-&= 8\lim_{x \to 0}\frac{1}{3x^4} \\
-&= 8 \times \frac{1}{0}
-\end{align}
+$$\begin{align}
+&= \lim_{x \to 0}  \frac{4x^4}{3x^4} + \lim_{x \to 0} \frac{7x^2}{3x^4}+ \lim_{x \to 0}  \frac{8}{3x^4} \\[12pt]
+&= \lim_{x \to 0}  \frac{4}{3} + \lim_{x \to 0} \frac{7}{3x^2}+ \lim_{x \to 0}  \frac{8}{3x^4} \\[12pt]
+&= \frac{4}{3} + \frac{7}{0^{2}} + \frac{8}{0^{4}}
+\end{align}$$
 
 ---
 
@@ -307,15 +312,21 @@ Let's consider $\displaystyle\lim_{x \to 0} \frac{4x^4+7x^2 +8}{3x^4}$
 The limit does exist but the limit is $\infty$.
 
 --
-\begin{align}
-&= \lim_{x \to 0} \frac{4x^4+7x^2 +8}{3x^4} \\
-&= 8\lim_{x \to 0}\frac{1}{3x^4} \\
-&= 8 \times \frac{1}{0} \\
-&= \infty
-\end{align}
+
+$$\begin{align}
+  \displaystyle\lim_{x \to 0} \frac{4x^4+7x^2 +8}{3x^4} 
+    &= \frac{4}{3} + \lim_{x \to 0} \frac{7}{3x^2}+ \lim_{x \to 0}  \frac{8}{3x^4} \\[12pt]
+    &= \frac{4}{3} + \text{Huge number} + \text{Huge number} \\[12pt]
+    &= \infty
+\end{align}$$
+
+--
+
+As $x$ approaches $0$, the function retains some positive value in the numerator while denominator *positively* approach 0. This means that you are dividing by a smaller and smaller fraction, which means the entire statement is getting larger and approaches $\infty$.  
 
 
-As $x$ approaches $0$, the function retains some positive value in the numerator while denominator *positively* approach 0. This means that you are dividing by a smaller and smaller fraction, which the entire term is getting larger and approaches $\infty$.  
+
+
 
 ---
 
@@ -323,14 +334,17 @@ class: center, middle
 
 
 ```{r, echo=FALSE, cache = TRUE, fig.width = 6, fig.height = 5}
-df <- data.frame(x = seq(-10, 10, by = .01))
+df <- data_frame(x = seq(-10, 10, .001),
+                 y = (4*x^4+7*x^2+8)/(3*x^4))
 
-ggplot(df, aes(x)) + 
-stat_function(fun = function(x) (4*x^4+7*x^2+8)/(3*x^4), colour = "red")+ 
-xlab("x") + ylab("f(x)") +
-geom_hline(yintercept = 0, colour = mgray)+
-geom_vline(xintercept = 0, colour = mgray)+ ylim(-30,30)+
-geom_segment(x = 0, xend = 0, y =3, yend = 3, linetype = "dotdash") 
+ggplot(df, aes(x = x, y = y)) + 
+# stat_function(fun = function(x) (4*x^4+7*x^2+8)/(3*x^4), colour = "red")+ 
+# xlab("x") + ylab("f(x)") +
+geom_line(aes(group = x > 0), color = "red") +
+geom_hline(yintercept = 0, colour = lgray) +
+geom_vline(xintercept = 0, colour = lgray) +
+coord_cartesian(ylim = c(0, 50))
+
 ```
 
 ---
