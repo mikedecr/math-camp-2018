@@ -251,7 +251,7 @@ The information we record about what we study
 | Colectivo         | State St.     | 7      | fair | spotty wifi 
 | Fair Trade        | State St.     | 8      | good | expensive, tables 
 | Michelangelo's    | Capitol       | 5      | meh | bathroom key 
-| Steep & Brew      | Bascom Hill   | 1      | fair | truly the worst coffee ever 
+| Steep & Brew      | Bascom Hill   | 0      | fair | bad coffee (espresso OK)
 
 
 
