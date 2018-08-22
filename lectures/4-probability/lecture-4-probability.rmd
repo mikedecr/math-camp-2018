@@ -16,6 +16,16 @@ output:
       beforeInit: "https://platform.twitter.com/widgets.js"
 ---
 
+### Hang in there
+
+<center> 
+  <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">First-year political science phd students everywhere: <a href="https://t.co/jK2gPxiI6t">pic.twitter.com/jK2gPxiI6t</a></p>&mdash; Phoebe Henninger (@phoebehennn) <a href="https://twitter.com/phoebehennn/status/1032328481454153730?ref_src=twsrc%5Etfw">August 22, 2018</a></blockquote> 
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+
+
+---
+
 class: inverse, center, middle
 
 # Why do we mess with statistics?

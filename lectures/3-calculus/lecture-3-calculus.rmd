@@ -1815,7 +1815,7 @@ We can simply and solve this equation:
 --
 
 \begin{align}
-0 &= 6x^2 - 66^x+168 \\
+0 &= 6x^2 - 66x+168 \\
 0 &= x^2 - 11x + 28
 \end{align}
 
